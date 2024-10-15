@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://f7vxvrtmrda"]
+
+[ext_resource type="Script" path="res://Scripts/Fishing/fishing_water.gd" id="1_1ycu6"]
+[ext_resource type="Texture2D" uid="uid://cpo1i0l0wtt0" path="res://Assets/Player/Overworld/Placeholder/PlayerOverworld-Placeholder.png" id="1_cy0ke"]
+[ext_resource type="Script" path="res://Scripts/Player/player_fishing_movement.gd" id="1_mlx3j"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/state_machine.gd" id="3_ew3ht"]
+[ext_resource type="Script" path="res://Scripts/Player/Fishing/States/move_boat_state.gd" id="5_mwp3k"]
+[ext_resource type="Script" path="res://Scripts/Player/Fishing/States/move_swim_state.gd" id="7_bq4u2"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b7eue"]
+a = Vector2(-150, 0)
+b = Vector2(150, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucwld"]
+size = Vector2(719, 883)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkat7"]
+atlas = ExtResource("1_cy0ke")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhbi0"]
+size = Vector2(12, 16)
+
+[node name="FishingTest" type="Node2D"]
+
+[node name="Boat" type="StaticBody2D" parent="."]
+position = Vector2(360, 164)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat"]
+shape = SubResource("SegmentShape2D_b7eue")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 240)
+
+[node name="Water" type="Area2D" parent="."]
+position = Vector2(360, 240)
+collision_layer = 8
+collision_mask = 2
+gravity_space_override = 3
+gravity = 400.0
+script = ExtResource("1_1ycu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+position = Vector2(0.5, 367.5)
+shape = SubResource("RectangleShape2D_ucwld")
+
+[node name="Fisherman" type="CharacterBody2D" parent="."]
+position = Vector2(361, 130)
+scale = Vector2(4, 4)
+collision_layer = 2
+script = ExtResource("1_mlx3j")
+swim_speed = 100.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Fisherman"]
+texture = SubResource("AtlasTexture_kkat7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fisherman"]
+shape = SubResource("RectangleShape2D_lhbi0")
+
+[node name="State" type="Node" parent="Fisherman" node_paths=PackedStringArray("entity", "starting_state")]
+script = ExtResource("3_ew3ht")
+entity = NodePath("..")
+starting_state = NodePath("Land")
+
+[node name="Land" type="Node" parent="Fisherman/State" node_paths=PackedStringArray("sea_state")]
+script = ExtResource("5_mwp3k")
+sea_state = NodePath("../Sea")
+
+[node name="Sea" type="Node" parent="Fisherman/State" node_paths=PackedStringArray("land_state")]
+script = ExtResource("7_bq4u2")
+water_gravity = 10.0
+land_state = NodePath("../Land")

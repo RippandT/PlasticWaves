@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh5x2psau7odb"]
+
+[ext_resource type="PackedScene" uid="uid://c4m4vvhbtaof7" path="res://Objects/Boat/boat_overworld.tscn" id="1_3k0x2"]
+
+[node name="GameplayTest" type="Node2D"]
+
+[node name="Overworld" type="Node2D" parent="."]
+
+[node name="BoatParty" parent="Overworld" instance=ExtResource("1_3k0x2")]
+position = Vector2(391, 301)
+
+[node name="Camera2D" type="Camera2D" parent="Overworld"]
+position = Vector2(360, 240)
+
+[node name="Fishing" type="Node2D" parent="."]
