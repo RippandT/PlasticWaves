@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdwo0ubn0picr"]
+
+[ext_resource type="Texture2D" uid="uid://cpo1i0l0wtt0" path="res://Assets/Player/Overworld/Placeholder/PlayerOverworld-Placeholder.png" id="1_kag5e"]
+[ext_resource type="Script" path="res://Scripts/Fish/fish.gd" id="1_u82in"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk72y"]
+atlas = ExtResource("1_kag5e")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uts8r"]
+size = Vector2(40.5, 27)
+
+[node name="Fish" type="CharacterBody2D" node_paths=PackedStringArray("visibility_checker")]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_u82in")
+visibility_checker = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-20.6124, 0)
+rotation = 1.5708
+scale = Vector2(2.57656, 2.57656)
+texture = SubResource("AtlasTexture_fk72y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-20.75, -0.5)
+shape = SubResource("RectangleShape2D_uts8r")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-20.5, -0.499999)
+scale = Vector2(2.05, 1.35)
