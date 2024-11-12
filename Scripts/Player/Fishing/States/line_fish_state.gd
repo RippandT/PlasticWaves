@@ -18,8 +18,9 @@ func enter() -> void:
 	activation.emit(true)
 
 func process_physics(delta) -> State:
-	var direction: float = Input.get_axis("player_fishing_hook_up", "player_fishing_hook_down")
-	line_move.emit(direction)
+	if is_multiplayer_authority():
+		var direction: float = Input.get_axis("player_fishing_hook_up", "player_fishing_hook_down")
+		line_move.emit(direction)
 	
 	if parent.underwater == true:
 		return sea_state
@@ -27,7 +28,7 @@ func process_physics(delta) -> State:
 	return null
 
 func process_input(event) -> State:
-	if event.is_action_pressed("player_fishing_interact"):
+	if event.is_action_pressed("player_fishing_interact") and is_multiplayer_authority():
 		return land_state
 	return null
 

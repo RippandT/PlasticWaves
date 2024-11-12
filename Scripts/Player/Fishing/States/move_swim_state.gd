@@ -21,9 +21,12 @@ func exit() -> void:
 	activation.emit(false)
 
 func process_physics(delta: float) -> State:
-	var move_direction: Vector2 = Input.get_vector("player_fishing_move_left","player_fishing_move_right","player_fishing_swim_up","player_fishing_swim_down")
-	
-	swim.emit(move_direction)
+	if is_multiplayer_authority():
+		var move_direction: Vector2 = Input.get_vector("player_fishing_move_left",
+													"player_fishing_move_right",
+													"player_fishing_swim_up",
+													"player_fishing_swim_down")
+		swim.emit(move_direction)
 	
 	if parent.underwater == false:
 		return land_state

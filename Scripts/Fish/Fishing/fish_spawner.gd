@@ -6,11 +6,14 @@ extends Node2D
 @export var spawn_rate: Vector2
 
 @export_group("Spawn Places")
+@export var parent_node: Node2D
 @export var top: Marker2D
 @export var bottom: Marker2D
 
 func _ready():
-	fish_spawner()
+	# Stops the client from spawning in fishes
+	if multiplayer.is_server():
+		fish_spawner()
 	
 ## Spawns fishes at an interval
 func fish_spawner():
@@ -23,4 +26,4 @@ func spawn_fish(location: Vector2):
 	var fish_instance := fish.instantiate()
 	fish_instance.position = location
 	fish_instance.flip_fish = filp_fish
-	self.add_child(fish_instance)
+	parent_node.add_child(fish_instance, true)

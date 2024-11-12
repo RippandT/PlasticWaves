@@ -1,18 +1,21 @@
 extends State
 class_name BoatIdleState
 
-@export var info: BoatInfo
-
 @export_group("States")
 @export var moving_state: State
 @export var interacting_state: State
 
 var animation_suffix: String
 
+var info: BoatInfo
+
+func init_state() -> void:
+	info = parent.boat_info
+
 func enter() -> void:
-	if animation_suffix == "":
-		animation_suffix = animation_name
-	animation_name = info.direction_array[info.direction] + animation_suffix
+	#if animation_suffix == "":
+	#	animation_suffix = animation_name
+	#animation_name = parent.boat_info.direction_array[parent.boat_info.direction] + animation_suffix
 	super()
 
 func process_physics(delta: float) -> State:

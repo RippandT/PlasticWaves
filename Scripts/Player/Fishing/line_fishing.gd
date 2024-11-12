@@ -1,7 +1,5 @@
-extends Area2D
-
-var activated: bool = false
-var has_fish: bool = false
+extends FishingBase
+class_name LineFishing
 
 @export var fish_counter: Label
 @export var fish_in_hook: Sprite2D
@@ -15,21 +13,20 @@ func activate_fishing(active: bool) -> void:
 	
 	if active == false:
 		fish_in_hook.hide()
-		has_fish = false
+		clear_fishes_from_inventory()
 
 ## Moves the hook
 func move(direction: float) -> void:
 	position.y += direction
-	if position.y <= 0.0 and has_fish:
-		has_fish = false
-		fish_counter.add_to_count(1)
+	# Check if the player is at the boat
+	# Right now, it only checks if the player's above sea level
+	if position.y <= 0.0 and get_fish_inventory_count() > 0:
+		add_fishes_to_boat()
 		fish_in_hook.visible = false
-		print("Got Fish")
 
 ## Hooks the fish if the gook is free
-func get_fish(fish) -> void:
-	if has_fish == false and activated:
-		print(fish)
+func get_fish(fish: Node2D) -> void:
+	if get_fish_inventory_count() == 0 and activated:
+		add_fish_to_inventory(fish)
 		fish.call_deferred("queue_free")
-		has_fish = true
 		fish_in_hook.visible = true

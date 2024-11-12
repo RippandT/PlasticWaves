@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs28ig01j1maa"]
+
+[ext_resource type="Script" path="res://_debug/Script/host_prototype.gd" id="1_0ya38"]
+[ext_resource type="PackedScene" uid="uid://bh5x2psau7odb" path="res://_debug/Scenes/gameplay_test.tscn" id="2_8corw"]
+[ext_resource type="Script" path="res://_debug/Script/join_prototype.gd" id="3_crx8f"]
+
+[node name="PrototypeMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Multiplayer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -33.0
+offset_right = 225.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Host" type="Button" parent="Multiplayer"]
+layout_mode = 2
+text = "Host"
+script = ExtResource("1_0ya38")
+gameplay_test = ExtResource("2_8corw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Multiplayer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Multiplayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "localhost"
+placeholder_text = "IP Address"
+
+[node name="Join" type="Button" parent="Multiplayer/HBoxContainer"]
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 2
+text = "Join"
+script = ExtResource("3_crx8f")
+gameplay_test = ExtResource("2_8corw")

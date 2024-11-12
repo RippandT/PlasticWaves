@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4m4vvhbtaof7"]
+[gd_scene load_steps=11 format=3 uid="uid://c4m4vvhbtaof7"]
 
 [ext_resource type="Script" path="res://Scripts/Boat/Overworld/boat_overworld_character.gd" id="1_ewx8c"]
 [ext_resource type="Texture2D" uid="uid://cpo1i0l0wtt0" path="res://Assets/Player/Overworld/Placeholder/PlayerOverworld-Placeholder.png" id="1_hm0jt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/state_machine.gd" id="1_onbfp"]
 [ext_resource type="Script" path="res://Scripts/Boat/Overworld/States/idle_state.gd" id="3_8h85a"]
-[ext_resource type="Script" path="res://Scripts/Boat/Overworld/boat_info.gd" id="4_d04rj"]
 [ext_resource type="Script" path="res://Scripts/Boat/Overworld/States/moving_state.gd" id="5_nhp62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp2g6"]
@@ -43,12 +42,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BoatParty" type="CharacterBody2D"]
+[node name="BoatOverworld" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_ewx8c")
 speed = 150.0
-
-[node name="Info" type="Node" parent="."]
-script = ExtResource("4_d04rj")
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yp2g6")
@@ -63,15 +61,13 @@ script = ExtResource("1_onbfp")
 entity = NodePath("..")
 starting_state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="States" node_paths=PackedStringArray("info", "moving_state")]
+[node name="Idle" type="Node" parent="States" node_paths=PackedStringArray("moving_state")]
 script = ExtResource("3_8h85a")
-info = NodePath("../../Info")
 moving_state = NodePath("../Moving")
 animation_name = "-idle"
 
-[node name="Moving" type="Node" parent="States" node_paths=PackedStringArray("info", "idle_state")]
+[node name="Moving" type="Node" parent="States" node_paths=PackedStringArray("idle_state")]
 script = ExtResource("5_nhp62")
-info = NodePath("../../Info")
 idle_state = NodePath("../Idle")
 animation_name = "-move"
 

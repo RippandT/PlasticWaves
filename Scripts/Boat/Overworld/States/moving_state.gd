@@ -3,18 +3,21 @@ class_name BoatMovingState
 
 signal move_vector(direction: Vector2)
 
-@export var info: BoatInfo
-
 @export_group("States")
 @export var idle_state: State
 @export var interacting_state: State
 
 var animation_suffix: String
 
+var info: BoatInfo
+
+func init_state() -> void:
+	info = parent.boat_info
+
 func enter() -> void:
-	if animation_suffix == "":
-		animation_suffix = animation_name
-	animation_name = info.direction_array[info.direction] + animation_suffix
+	#if animation_suffix == "":
+	#	animation_suffix = animation_name
+	#animation_name = info.direction_array[info.direction] + animation_suffix
 	super()
 
 func process_physics(delta: float) -> State:

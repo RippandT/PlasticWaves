@@ -1,11 +1,20 @@
 extends CharacterMovement
 class_name Fish
 
-@export var visibility_checker: VisibleOnScreenNotifier2D
+@export_group("Fish Info")
+@export var fish_name: String
+## In kg, limit's 999999.99; cannot go into the negatives
+@export var fish_weight: float:
+	get:
+		return fish_weight
+	set(value):
+		fish_weight = clampf(value, 0, 9999999.99)
 
+var visibility_checker: VisibleOnScreenNotifier2D
 var flip_fish: bool = false
 
 func _ready() -> void:
+	visibility_checker = $VisibilityChecker
 	# Stores either -1 or 1 depending on flip_fish
 	var flip_int: int = 1 - (2 * int(flip_fish))
 	
@@ -18,4 +27,5 @@ func _physics_process(delta) -> void:
 	move_character_topdown(Vector2.RIGHT)
 
 func swim_away() -> void:
-	call_deferred("queue_free")
+	if multiplayer.is_server():
+		call_deferred("queue_free")

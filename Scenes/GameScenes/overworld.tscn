@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://v3n6hql7kbyr"]
+
+[ext_resource type="Script" path="res://Scripts/Game/SceneInitializers/overworld_scene.gd" id="1_wrwco"]
+[ext_resource type="PackedScene" uid="uid://c4m4vvhbtaof7" path="res://Objects/Boat/boat_overworld.tscn" id="2_rd5q7"]
+[ext_resource type="Script" path="res://Scripts/Game/Overworld/fishing_spot.gd" id="3_spwm5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aoltd"]
+radius = 54.1479
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_igkf2"]
+properties/0/path = NodePath("BoatParty:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Overworld" type="Node2D"]
+script = ExtResource("1_wrwco")
+debug_mode = true
+
+[node name="BoatParty" parent="." instance=ExtResource("2_rd5q7")]
+position = Vector2(362, 184)
+
+[node name="FishingSpot" type="Area2D" parent="."]
+position = Vector2(494, 282)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("3_spwm5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishingSpot"]
+shape = SubResource("CircleShape2D_aoltd")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(360, 240)
+zoom = Vector2(1.71, 1.71)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_igkf2")

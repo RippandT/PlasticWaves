@@ -1,15 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh5x2psau7odb"]
+[gd_scene load_steps=8 format=3 uid="uid://bh5x2psau7odb"]
 
-[ext_resource type="PackedScene" uid="uid://c4m4vvhbtaof7" path="res://Objects/Boat/boat_overworld.tscn" id="1_3k0x2"]
+[ext_resource type="Script" path="res://Scripts/Game/game_info.gd" id="1_8s0sb"]
+[ext_resource type="Script" path="res://Scripts/Game/game_initializer.gd" id="1_rrtqo"]
+[ext_resource type="PackedScene" uid="uid://f7vxvrtmrda" path="res://Scenes/GameScenes/fishing.tscn" id="2_cbw3k"]
+[ext_resource type="PackedScene" uid="uid://v3n6hql7kbyr" path="res://Scenes/GameScenes/overworld.tscn" id="2_nnecm"]
+[ext_resource type="Script" path="res://Scripts/Game/player_info.gd" id="2_wkyts"]
+[ext_resource type="Script" path="res://Scripts/Boat/Overworld/boat_info.gd" id="3_yot51"]
 
-[node name="GameplayTest" type="Node2D"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_506sj"]
+properties/0/path = NodePath("PlayerInfo:player_data")
+properties/0/spawn = true
+properties/0/replication_mode = 2
 
-[node name="Overworld" type="Node2D" parent="."]
+[node name="GameplayTest" type="Node"]
+script = ExtResource("1_rrtqo")
+overworld_scene = ExtResource("2_nnecm")
+fishing_scene = ExtResource("2_cbw3k")
 
-[node name="BoatParty" parent="Overworld" instance=ExtResource("1_3k0x2")]
-position = Vector2(391, 301)
+[node name="GameInfo" type="Node" parent="." node_paths=PackedStringArray("game_overseer")]
+script = ExtResource("1_8s0sb")
+game_overseer = NodePath("..")
 
-[node name="Camera2D" type="Camera2D" parent="Overworld"]
-position = Vector2(360, 240)
+[node name="PlayerInfo" type="Node" parent="."]
+script = ExtResource("2_wkyts")
 
-[node name="Fishing" type="Node2D" parent="."]
+[node name="BoatInfo" type="Node" parent="."]
+script = ExtResource("3_yot51")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_506sj")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Scenes/GameScenes/overworld.tscn", "res://Scenes/GameScenes/fishing.tscn")
+spawn_path = NodePath("..")

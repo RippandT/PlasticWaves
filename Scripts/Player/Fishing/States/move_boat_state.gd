@@ -11,9 +11,9 @@ func init_state() -> void:
 	move_platformer.connect(parent.move_character_platformer)
 
 func process_physics(delta: float) -> State:
-	var move_direction: float = Input.get_axis("player_fishing_move_left","player_fishing_move_right")
-	
-	move_platformer.emit(move_direction, false)
+	if is_multiplayer_authority():
+		var move_direction: float = Input.get_axis("player_fishing_move_left","player_fishing_move_right")
+		move_platformer.emit(move_direction, false)
 	
 	if parent.underwater == true:
 		return sea_state
@@ -21,6 +21,6 @@ func process_physics(delta: float) -> State:
 	return null
 
 func process_input(event) -> State:
-	if event.is_action_pressed("player_fishing_interact"):
+	if event.is_action_pressed("player_fishing_interact") and is_multiplayer_authority():
 		return line_fish_state
 	return null
