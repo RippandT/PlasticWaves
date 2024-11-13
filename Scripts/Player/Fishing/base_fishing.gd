@@ -3,7 +3,6 @@ class_name FishingBase
 
 @export var fisherman_player: FishermanMovement
 var activated: bool = false
-var player_fish_inventory
 
 func activate_fishing(active: bool) -> void:
 	return
@@ -17,12 +16,15 @@ func clear_fishes_from_inventory() -> void:
 	fisherman_player.player_data.fish_captured.clear()
 
 func get_fish_inventory_count() -> int:
-	return fisherman_player.player_data.fish_captured.size()
+	return get_fish_inventory().size()
+
+func get_fish_inventory() -> Array[Dictionary]:
+	return fisherman_player.player_data.fish_captured
 
 func is_fish_inventory_full() -> bool:
 	return get_fish_inventory_count() >= fisherman_player.player_data.max_fish_in_inventory
 
 # Fish to Boat Inventory #
 func add_fishes_to_boat() -> void:
-	fisherman_player.place_fish_in_boat_inventory.emit(fisherman_player.player_data.fish_captured)
+	fisherman_player.place_fish_in_boat_inventory.emit(get_fish_inventory())
 	clear_fishes_from_inventory()

@@ -1,0 +1,101 @@
+[gd_scene load_steps=3 format=3 uid="uid://2c0of41cehqe"]
+
+[ext_resource type="Script" path="res://Scripts/Game/SceneInitializers/selling_scene.gd" id="1_hhc75"]
+[ext_resource type="PackedScene" uid="uid://bqeayscm83eet" path="res://Objects/Game/fish_sold_label.tscn" id="2_0btbv"]
+
+[node name="Selling" type="Control" node_paths=PackedStringArray("catch_summary_container", "total_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hhc75")
+catch_summary_container = NodePath("ScrollContainer/VBoxContainer")
+fish_sold_label = ExtResource("2_0btbv")
+total_label = NodePath("Total/Price")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 76
+text = "Today's Haul"
+
+[node name="Labels" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 182.0
+offset_top = 141.0
+offset_right = 1098.0
+offset_bottom = 171.0
+
+[node name="Fish" type="Label" parent="Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 21
+text = "FISH"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Weight" type="Label" parent="Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 21
+text = "WEIGHT"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Price" type="Label" parent="Labels"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 21
+text = "PRICE"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 182.0
+offset_top = 175.0
+offset_right = -182.0
+offset_bottom = -150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Total" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 182.0
+offset_top = 588.0
+offset_right = 845.0
+offset_bottom = 618.0
+
+[node name="Label" type="Label" parent="Total"]
+layout_mode = 2
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 21
+text = "Total: PHP"
+horizontal_alignment = 2
+uppercase = true
+
+[node name="Price" type="Label" parent="Total"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 21
+text = "000000"
+uppercase = true

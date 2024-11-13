@@ -1,6 +1,7 @@
 extends Area2D
-class_name FishingSpot
+class_name OverworldSpot
 
+@export_enum("Overworld", "Fishing", "Selling") var next_scene: int
 var game: GameInfo
 
 func _enter_tree():
@@ -8,7 +9,8 @@ func _enter_tree():
 	body_entered.connect(boat_entered)
 
 func go_fishing():
-	game.change_scene(1)
+	print(next_scene)
+	game.change_scene(next_scene)
 
 func boat_entered(boat: BoatOverworldCharacter):
 	boat.go_fishing.connect(go_fishing)

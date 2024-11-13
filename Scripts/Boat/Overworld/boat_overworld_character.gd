@@ -2,11 +2,12 @@ extends CharacterMovement
 class_name BoatOverworldCharacter
 
 signal go_fishing
+signal send_boat_location(location: Vector2)
 
-@export var boat_info: BoatInfo
+var boat_info: BoatInfo
 @onready var state_machine: StateMachine = $States
 
-func _ready():
+func initialize(boat: BoatInfo):
 	boat_info = get_parent().boat_info
 	position = boat_info.location
 	speed_x = speed

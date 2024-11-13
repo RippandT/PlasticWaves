@@ -6,7 +6,6 @@ signal new_player_connected(player_data)
 
 var player_data: Array[PlayerData]
 
-
 func player_connected(player_id, player_name:String):
 	load_new_player.rpc(player_id, player_name)
 
@@ -19,7 +18,7 @@ func load_new_player(player_id: int, player_name: String = ""):
 	player_data.append(new_player_data)
 	new_player_connected.emit(new_player_data)
 	print(new_player_data.player_id)
-
+	
 
 func load_player_data(player_id: int):
 	pass

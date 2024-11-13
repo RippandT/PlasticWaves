@@ -16,7 +16,7 @@ func _input(event) -> void:
 func activate_fishing(active: bool) -> void:
 	activated = active
 	if active == false:
-		pass
+		add_fishes_to_boat()
 	# Clear the fish count when the player submerges
 	clear_fishes_from_inventory()
 	

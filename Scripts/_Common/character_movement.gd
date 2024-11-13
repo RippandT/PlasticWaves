@@ -6,11 +6,12 @@ class_name CharacterMovement
 ## Default jump height of the characterbody
 @export var jump_height = 30.0
 
+# In hindsight, these are supposed to be one Vector2.
+# Will be changed when we refractor the codebase
 ## The speed of the character going horizontally
 var speed_x: float = 0.0
 ## The speed of the character going vertically
 var speed_y: float = 0.0
-
 
 ## Used for topdown movement (e.g. Overworld Boat)
 func move_character_topdown(direction: Vector2):

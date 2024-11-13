@@ -3,7 +3,8 @@ class_name GameInitializer
 
 @export var overworld_scene: PackedScene
 @export var fishing_scene: PackedScene
-var current_scene: String
+@export var selling_scene: PackedScene
+var current_scene: Node
 
 @onready var game_info: GameInfo = $GameInfo
 @onready var player_info: PlayerInfo = $PlayerInfo
@@ -15,9 +16,9 @@ func load_scene_rpc(scene: PackedScene):
 @rpc("any_peer", "reliable", "call_local")
 func load_scene(scene: PackedScene) -> void:
 	var loaded_scene: SceneInitializer = scene.instantiate()
-	if !current_scene.is_empty():
-		get_node(current_scene).free()
-	current_scene = loaded_scene.name
+	if current_scene != null:
+		current_scene.call_deferred("free")
+	current_scene = loaded_scene
 	loaded_scene.initialize_scene(game_info, player_info, boat_info)
 	add_child.call_deferred(loaded_scene)
 

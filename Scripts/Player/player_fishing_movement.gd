@@ -8,10 +8,11 @@ signal place_fish_in_boat_inventory(fishes: Array[Dictionary])
 @export var oxygen_meter: OxygenMeter
 
 var player_data: PlayerData
-var player_id: int = 1:
+@export var player_id: int = 1:
 	set(id):
 		player_id = id
 		set_multiplayer_authority(player_data.player_id)
+
 var underwater: bool = false
 
 func _ready() -> void:
@@ -38,7 +39,12 @@ func swim_movement(direction: Vector2) -> void:
 	move_and_slide()
 
 func increment_player_health(value: int) -> void:
+	player_data
 	player_data.player_health += value
+	update_player_health()
+
+func activate_player(player_id) -> void:
+	player_id
 
 func get_player_health() -> int:
 	return player_data.player_health

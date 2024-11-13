@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bh5x2psau7odb"]
+[gd_scene load_steps=9 format=3 uid="uid://bh5x2psau7odb"]
 
 [ext_resource type="Script" path="res://Scripts/Game/game_info.gd" id="1_8s0sb"]
 [ext_resource type="Script" path="res://Scripts/Game/game_initializer.gd" id="1_rrtqo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://v3n6hql7kbyr" path="res://Scenes/GameScenes/overworld.tscn" id="2_nnecm"]
 [ext_resource type="Script" path="res://Scripts/Game/player_info.gd" id="2_wkyts"]
 [ext_resource type="Script" path="res://Scripts/Boat/Overworld/boat_info.gd" id="3_yot51"]
+[ext_resource type="PackedScene" uid="uid://2c0of41cehqe" path="res://Scenes/GameScenes/selling.tscn" id="4_1x0kt"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_506sj"]
 properties/0/path = NodePath("PlayerInfo:player_data")
@@ -16,6 +17,7 @@ properties/0/replication_mode = 2
 script = ExtResource("1_rrtqo")
 overworld_scene = ExtResource("2_nnecm")
 fishing_scene = ExtResource("2_cbw3k")
+selling_scene = ExtResource("4_1x0kt")
 
 [node name="GameInfo" type="Node" parent="." node_paths=PackedStringArray("game_overseer")]
 script = ExtResource("1_8s0sb")

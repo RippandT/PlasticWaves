@@ -14,10 +14,12 @@ func add_catch(catch: String, size: float = 10.0):
 func clear_catch_inventory():
 	catch_inventory.clear()
 
-## Changes current scene; 0 for Overworld 1 for Fishing
+## Changes current scene; 0 for Overworld, 1 for Fishing, 2 for Selling
 func change_scene(scene_index: int):
 	match scene_index:
 		0:
 			game_overseer.load_scene_rpc(game_overseer.overworld_scene)
 		1:
 			game_overseer.load_scene_rpc(game_overseer.fishing_scene)
+		2:
+			game_overseer.load_scene_rpc(game_overseer.selling_scene)

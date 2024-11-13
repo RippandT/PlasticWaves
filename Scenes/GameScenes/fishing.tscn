@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://f7vxvrtmrda"]
+[gd_scene load_steps=11 format=3 uid="uid://f7vxvrtmrda"]
 
 [ext_resource type="Script" path="res://Scripts/Game/SceneInitializers/fishing_scene.gd" id="1_1d555"]
 [ext_resource type="Script" path="res://Scripts/Camera/camera_follow.gd" id="2_3hq0m"]
-[ext_resource type="Script" path="res://_debug/Script/debug_count.gd" id="3_qb7eq"]
+[ext_resource type="Script" path="res://Scenes/GameScenes/fish_inventory_gui.gd" id="3_owmws"]
 [ext_resource type="Script" path="res://Scripts/Fish/Fishing/fishing_water.gd" id="4_psroe"]
+[ext_resource type="PackedScene" uid="uid://bd35qd86usxj6" path="res://Objects/Game/fish_inventory_label.tscn" id="4_rqyl6"]
 [ext_resource type="PackedScene" uid="uid://b0r7scjvxmjtf" path="res://Objects/Game/fisherman_player.tscn" id="5_l1pbv"]
 [ext_resource type="Script" path="res://Scripts/Fish/Fishing/fish_spawner.gd" id="6_lkbch"]
 [ext_resource type="PackedScene" uid="uid://cdwo0ubn0picr" path="res://Objects/Fish/Fish.tscn" id="7_656qj"]
@@ -15,11 +16,56 @@ b = Vector2(150, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucwld"]
 size = Vector2(1280, 1591)
 
-[node name="Fishing" type="Node2D" node_paths=PackedStringArray("fisherman_spawn", "fisherman_spawn_node")]
+[node name="Fishing" type="Node2D" node_paths=PackedStringArray("fisherman_spawn", "fisherman_spawn_node", "fish_caught_list")]
 script = ExtResource("1_1d555")
 fisherman_spawn = NodePath("FishermanSpawn")
 fisherman_object = ExtResource("5_l1pbv")
 fisherman_spawn_node = NodePath("Players")
+fish_caught_list = NodePath("FishCaughtList")
+
+[node name="FishCaughtList" type="Control" parent="." node_paths=PackedStringArray("fish_container")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 957.0
+offset_top = 1.0
+offset_right = 1279.0
+offset_bottom = 166.0
+grow_horizontal = 0
+script = ExtResource("3_owmws")
+fish_inventory_label = ExtResource("4_rqyl6")
+fish_container = NodePath("ScrollContainer/VBoxContainer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FishCaughtList"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 23.0
+
+[node name="Label" type="Label" parent="FishCaughtList/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fish"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="FishCaughtList/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Weight"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="FishCaughtList"]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 323.0
+offset_bottom = 166.0
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FishCaughtList/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="CameraBox" type="Node2D" parent="."]
 
@@ -41,40 +87,6 @@ position = Vector2(539, 164)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boat"]
 shape = SubResource("SegmentShape2D_b7eue")
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Boat"]
-offset_left = -66.0
-offset_top = 2.0
-offset_right = 81.0
-offset_bottom = 29.0
-
-[node name="SubViewport" type="SubViewport" parent="Boat/SubViewportContainer"]
-disable_3d = true
-handle_input_locally = false
-size = Vector2i(147, 27)
-render_target_update_mode = 4
-
-[node name="Control" type="Control" parent="Boat/SubViewportContainer/SubViewport"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Fish" type="Label" parent="Boat/SubViewportContainer/SubViewport/Control"]
-layout_mode = 0
-offset_right = 112.0
-offset_bottom = 23.0
-text = "Fishes Caught:"
-
-[node name="Count" type="Label" parent="Boat/SubViewportContainer/SubViewport/Control"]
-layout_mode = 0
-offset_left = 115.0
-offset_right = 134.0
-offset_bottom = 23.0
-text = "00"
-script = ExtResource("3_qb7eq")
 
 [node name="BoatInfo" type="Node" parent="Boat"]
 
