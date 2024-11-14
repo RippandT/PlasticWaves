@@ -25,6 +25,7 @@ script = ExtResource("1_u82in")
 fish_name = "Milkfish"
 fish_weight_average = 1.5
 fish_weight_range = 0.75
+fish_price_per_kilo = 120.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-20.6124, 0)

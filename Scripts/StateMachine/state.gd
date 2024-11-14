@@ -21,7 +21,7 @@ func enter() -> void:
 		audio.play()
 	
 	if animations != null:
-		animations.play_animation(animation_name)
+		animations.play(animation_name)
 
 ## Code to play when the state is deactivated
 func exit() -> void:

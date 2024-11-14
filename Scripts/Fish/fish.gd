@@ -1,6 +1,7 @@
 extends CharacterMovement
 class_name Fish
 
+@export var is_moving: bool = true
 @export_group("Fish Info")
 @export var fish_name: String
 ## In kg, limit's 999999.99; cannot go into the negatives
@@ -14,8 +15,15 @@ class_name Fish
 	get:
 		return fish_weight_range
 	set(value):
-		fish_weight_range = clampf(value, 0, 99.99)
+		fish_weight_range = clampf(Math.roundup(value), 0, 9999.99)
 		set_range(fish_weight_average, fish_weight_range)
+## In PHP
+@export var fish_price_per_kilo: float:
+	get:
+		return fish_price_per_kilo
+	set(value):
+		fish_price_per_kilo = clampf(Math.roundup(value), 0, 99999.99)
+
 
 var fish_weight_max: float
 var fish_weight_min: float
@@ -44,7 +52,8 @@ func _ready() -> void:
 	apply_scale(Vector2(flip_int, 1))
 
 func _physics_process(delta) -> void:
-	move_character_topdown(Vector2.RIGHT)
+	if is_moving:
+		move_character_topdown(Vector2.RIGHT)
 
 func swim_away() -> void:
 	if multiplayer.is_server():

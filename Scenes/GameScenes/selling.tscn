@@ -99,3 +99,7 @@ size_flags_vertical = 5
 theme_override_font_sizes/font_size = 21
 text = "000000"
 uppercase = true
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Objects/Game/fish_sold_label.tscn")
+spawn_path = NodePath("../ScrollContainer/VBoxContainer")

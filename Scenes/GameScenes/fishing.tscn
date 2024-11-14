@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://f7vxvrtmrda"]
+[gd_scene load_steps=17 format=3 uid="uid://f7vxvrtmrda"]
 
 [ext_resource type="Script" path="res://Scripts/Game/SceneInitializers/fishing_scene.gd" id="1_1d555"]
 [ext_resource type="Script" path="res://Scripts/Camera/camera_follow.gd" id="2_3hq0m"]
@@ -9,19 +9,49 @@
 [ext_resource type="Script" path="res://Scripts/Fish/Fishing/fish_spawner.gd" id="6_lkbch"]
 [ext_resource type="PackedScene" uid="uid://cdwo0ubn0picr" path="res://Objects/Fish/Fish.tscn" id="7_656qj"]
 
+[sub_resource type="Gradient" id="Gradient_ab0l3"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.270588, 0.619608, 0.866667, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_01seo"]
+gradient = SubResource("Gradient_ab0l3")
+width = 1
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_b7eue"]
 a = Vector2(-150, 0)
 b = Vector2(150, 0)
 
+[sub_resource type="Gradient" id="Gradient_y4cny"]
+offsets = PackedFloat32Array(0, 0.208202, 0.81388, 1)
+colors = PackedColorArray(0.654406, 0.438807, 0.107515, 1, 0.836183, 0.5668, 0.16532, 1, 0.722922, 0.487051, 0.129303, 1, 0.609661, 0.407302, 0.0932856, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ucevs"]
+gradient = SubResource("Gradient_y4cny")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ucwld"]
 size = Vector2(1280, 1591)
 
-[node name="Fishing" type="Node2D" node_paths=PackedStringArray("fisherman_spawn", "fisherman_spawn_node", "fish_caught_list")]
+[sub_resource type="Gradient" id="Gradient_voj8o"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.239748, 0.671924)
+colors = PackedColorArray(0, 0.0745098, 0.713726, 0.321569, 0.0980392, 0.329412, 0.984314, 0.239216, 0.203922, 1, 1, 0.435294)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l4ast"]
+gradient = SubResource("Gradient_voj8o")
+width = 16
+
+[node name="Fishing" type="Node2D" node_paths=PackedStringArray("fisherman_spawn", "fisherman_spawn_node", "fisherman_camera", "fish_caught_list")]
 script = ExtResource("1_1d555")
 fisherman_spawn = NodePath("FishermanSpawn")
 fisherman_object = ExtResource("5_l1pbv")
 fisherman_spawn_node = NodePath("Players")
+fisherman_camera = NodePath("CameraBox/Camera2D")
 fish_caught_list = NodePath("FishCaughtList")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(640.25, 878.25)
+scale = Vector2(1281.5, 1757.5)
+texture = SubResource("GradientTexture1D_01seo")
 
 [node name="FishCaughtList" type="Control" parent="." node_paths=PackedStringArray("fish_container")]
 layout_mode = 3
@@ -87,20 +117,12 @@ position = Vector2(539, 164)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boat"]
 shape = SubResource("SegmentShape2D_b7eue")
+one_way_collision = true
 
-[node name="BoatInfo" type="Node" parent="Boat"]
-
-[node name="Water" type="Area2D" parent="."]
-position = Vector2(360, 240)
-collision_layer = 8
-collision_mask = 2
-gravity_space_override = 3
-gravity = 400.0
-script = ExtResource("4_psroe")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
-position = Vector2(281, 721.5)
-shape = SubResource("RectangleShape2D_ucwld")
+[node name="BoatPrototype" type="Sprite2D" parent="Boat"]
+position = Vector2(3.93391e-06, 4.5)
+scale = Vector2(1.17188, 11)
+texture = SubResource("GradientTexture1D_ucevs")
 
 [node name="FishermanSpawn" type="Marker2D" parent="."]
 position = Vector2(540, 130)
@@ -138,6 +160,74 @@ position = Vector2(1290, 666)
 
 [node name="Fishes" type="Node2D" parent="."]
 
+[node name="DeepFish" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(282, 1286)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish2" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(825, 1379)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish3" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(619, 1238)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish4" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(379, 1532)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish5" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(877, 1201)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish6" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(900, 1552)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish7" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(608, 1472)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="Water" type="Area2D" parent="."]
+position = Vector2(360, 240)
+collision_layer = 8
+collision_mask = 2
+gravity_space_override = 3
+gravity = 400.0
+script = ExtResource("4_psroe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
+position = Vector2(281, 721.5)
+shape = SubResource("RectangleShape2D_ucwld")
+
+[node name="WaterPrototype" type="Sprite2D" parent="Water"]
+modulate = Color(1, 1, 1, 0.823529)
+position = Vector2(280.83, 721.403)
+rotation = -1.5708
+scale = Vector2(99.4496, 1280.16)
+texture = SubResource("GradientTexture1D_l4ast")
+
 [node name="FishSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Objects/Fish/Fish.tscn")
 spawn_path = NodePath("../Fishes")
@@ -145,3 +235,10 @@ spawn_path = NodePath("../Fishes")
 [node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://Objects/Game/fisherman_player.tscn")
 spawn_path = NodePath("../Players")
+
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldBorder"]
+build_mode = 1
+polygon = PackedVector2Array(-25, 0, -25, 1759, 1313, 1759, 1313, 0)

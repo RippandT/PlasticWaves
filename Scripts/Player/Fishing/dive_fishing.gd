@@ -1,6 +1,8 @@
 extends FishingBase
 class_name DiveFishing
 
+signal counter_visiblility(visibility: bool)
+
 # This is for the purpose of the prototype
 # Will be changed and placed somewhere else later
 var fish_in_area: Array[Node2D]
@@ -15,6 +17,7 @@ func _input(event) -> void:
 
 func activate_fishing(active: bool) -> void:
 	activated = active
+	counter_visiblility.emit(active)
 	if active == false:
 		add_fishes_to_boat()
 	# Clear the fish count when the player submerges

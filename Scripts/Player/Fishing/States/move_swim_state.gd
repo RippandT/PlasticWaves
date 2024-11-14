@@ -28,6 +28,7 @@ func process_physics(delta: float) -> State:
 													"player_fishing_move_right",
 													"player_fishing_swim_up",
 													"player_fishing_swim_down")
+		animate_player(move_direction.x)
 		swim.emit(move_direction)
 	
 	oxygen(delta, -1)
@@ -42,3 +43,15 @@ func oxygen(delta: float, increment: int) -> void:
 	if time_passed >= parent.player_data.oxygen_depletion_rate:
 		parent.increment_player_health(increment)
 		time_passed = 0
+
+# This should be in another script, but that's future us problem
+func animate_player(direction: float) -> void:
+	if direction != 0:
+		animations.play("moving_land")
+	else:
+		animations.play("idle")
+	
+	if direction <= 0:
+		animations.flip_h = false
+	if direction >= 0:
+		animations.flip_h = true

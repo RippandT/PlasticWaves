@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://wij6r8kmakjh"]
+
+[ext_resource type="Texture2D" uid="uid://b6thfwekj1ol0" path="res://_debug/Assets/Player/Blorbo_fishing.png" id="1_hfkud"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4171"]
+atlas = ExtResource("1_hfkud")
+region = Rect2(72, 11, 54, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdrlc"]
+atlas = ExtResource("1_hfkud")
+region = Rect2(9, 11, 54, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsqs5"]
+atlas = ExtResource("1_hfkud")
+region = Rect2(72, 128, 54, 106)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aoyjq"]
+atlas = ExtResource("1_hfkud")
+region = Rect2(9, 128, 54, 106)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4171")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdrlc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsqs5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aoyjq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsqs5")
+}],
+"loop": true,
+"name": &"moving_land",
+"speed": 5.0
+}]

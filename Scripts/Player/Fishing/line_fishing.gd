@@ -10,6 +10,7 @@ func _ready() -> void:
 func activate_fishing(active: bool) -> void:
 	position.y = int(active)
 	activated = active
+	visible = active
 	
 	if active == false:
 		fish_in_hook.hide()

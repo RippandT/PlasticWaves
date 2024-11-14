@@ -16,6 +16,7 @@ var player_data: PlayerData
 var underwater: bool = false
 
 func _ready() -> void:
+	player_data = PlayerData.new()
 	if player_data != null:
 		player_name_label.text = player_data.player_name
 		oxygen_meter.setup_meter(player_data.player_health_max)

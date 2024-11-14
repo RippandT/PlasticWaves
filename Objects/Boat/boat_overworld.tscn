@@ -1,46 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4m4vvhbtaof7"]
+[gd_scene load_steps=7 format=3 uid="uid://c4m4vvhbtaof7"]
 
 [ext_resource type="Script" path="res://Scripts/Boat/Overworld/boat_overworld_character.gd" id="1_ewx8c"]
-[ext_resource type="Texture2D" uid="uid://cpo1i0l0wtt0" path="res://Assets/Player/Overworld/Placeholder/PlayerOverworld-Placeholder.png" id="1_hm0jt"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/state_machine.gd" id="1_onbfp"]
+[ext_resource type="Texture2D" uid="uid://dbn55sncbufs5" path="res://_debug/Assets/Boat.png" id="2_vwq7f"]
 [ext_resource type="Script" path="res://Scripts/Boat/Overworld/States/idle_state.gd" id="3_8h85a"]
 [ext_resource type="Script" path="res://Scripts/Boat/Overworld/States/moving_state.gd" id="5_nhp62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp2g6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ofmdj"]
-atlas = ExtResource("1_hm0jt")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hdvpk"]
-atlas = ExtResource("1_hm0jt")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3h2dk"]
-atlas = ExtResource("1_hm0jt")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qdhvt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ofmdj")
-}],
-"loop": true,
-"name": &"up-idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hdvpk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3h2dk")
-}],
-"loop": true,
-"name": &"up-move",
-"speed": 5.0
-}]
+size = Vector2(121, 85)
 
 [node name="BoatOverworld" type="CharacterBody2D"]
 collision_layer = 2
@@ -49,12 +16,12 @@ script = ExtResource("1_ewx8c")
 speed = 150.0
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -10.5)
 shape = SubResource("RectangleShape2D_yp2g6")
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_qdhvt")
-animation = &"up-move"
-frame_progress = 0.136668
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_vwq7f")
 
 [node name="States" type="Node" parent="." node_paths=PackedStringArray("entity", "starting_state")]
 script = ExtResource("1_onbfp")

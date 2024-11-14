@@ -1,4 +1,5 @@
 extends Camera2D
+class_name FishermanCamera
 
 @export var player_to_follow: FishermanMovement
 @export var limit_top_left: Marker2D
