@@ -37,7 +37,7 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Menu"]
 layout_mode = 2
-text = "Prototype (version: First Defense 0.1.0)"
+text = "Prototype (version: Capstone 1 Defense 0.1.0)"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Menu"]
