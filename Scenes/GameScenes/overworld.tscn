@@ -1,19 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://v3n6hql7kbyr"]
 
 [ext_resource type="Script" path="res://Scripts/Game/SceneInitializers/overworld_scene.gd" id="1_wrwco"]
+[ext_resource type="Texture2D" uid="uid://bltnggely521a" path="res://Assets/Overworld/overworld_prototype.png" id="2_mvytd"]
 [ext_resource type="PackedScene" uid="uid://c4m4vvhbtaof7" path="res://Objects/Boat/boat_overworld.tscn" id="2_rd5q7"]
 [ext_resource type="Script" path="res://Scripts/Game/Overworld/fishing_spot.gd" id="3_spwm5"]
-
-[sub_resource type="Gradient" id="Gradient_yt10f"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.00315457, 0.305994)
-colors = PackedColorArray(0.870892, 0.655308, 0.206087, 1, 0.870892, 0.655308, 0.206087, 1, 0, 0.698039, 0.929412, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nmcwq"]
-gradient = SubResource("Gradient_yt10f")
-width = 256
-height = 256
-fill_to = Vector2(0.679487, 0.551282)
 
 [sub_resource type="Gradient" id="Gradient_pn0q4"]
 interpolation_mode = 1
@@ -26,10 +16,16 @@ fill = 1
 fill_from = Vector2(0.504274, 0.491453)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aoltd"]
-radius = 147.167
+radius = 121.103
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_irpes"]
-size = Vector2(589.292, 46)
+size = Vector2(666.843, 70)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p24o6"]
+font_size = 66
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 0.392157)
+shadow_offset = Vector2(2.82, 2.99)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_igkf2"]
 properties/0/path = NodePath("BoatParty:position")
@@ -41,54 +37,55 @@ script = ExtResource("1_wrwco")
 
 [node name="OceanPrototype" type="Sprite2D" parent="."]
 position = Vector2(639.75, 359.75)
-scale = Vector2(4.99414, 2.81445)
-texture = SubResource("GradientTexture2D_nmcwq")
+texture = ExtResource("2_mvytd")
 
 [node name="FishingSpot" type="Area2D" parent="."]
-position = Vector2(997, 548)
+position = Vector2(920, 544)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_spwm5")
 next_scene = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="FishingSpot"]
+visible = false
 position = Vector2(-1.99998, 4.50002)
 scale = Vector2(5.21875, 5.29688)
 texture = SubResource("GradientTexture2D_ky84f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishingSpot"]
+position = Vector2(-8, 4)
 shape = SubResource("CircleShape2D_aoltd")
 
 [node name="SellingPort" type="Area2D" parent="."]
-position = Vector2(193, 170)
+position = Vector2(692, 435)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("3_spwm5")
 next_scene = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SellingPort"]
-position = Vector2(23.803, -17.5491)
-rotation = -0.6353
+position = Vector2(62.5785, -64)
 shape = SubResource("RectangleShape2D_irpes")
 
 [node name="Label" type="Label" parent="SellingPort"]
-offset_left = -119.0
-offset_top = 8.0
-offset_right = 79.0
-offset_bottom = 78.0
-rotation = -0.637045
+offset_left = -75.0
+offset_top = -178.0
+offset_right = 181.0
+offset_bottom = -87.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 51
 text = "Sell Fish"
+label_settings = SubResource("LabelSettings_p24o6")
 
 [node name="BoatParty" parent="." instance=ExtResource("2_rd5q7")]
-position = Vector2(640, 359)
+position = Vector2(621, 407)
 speed = 250.0
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldBorder"]
 build_mode = 1
-polygon = PackedVector2Array(426, 1, -2, 296, 0, 719, 1280, 720, 1280, 1)
+polygon = PackedVector2Array(0, 548, 97, 544, 194, 570, 229, 570, 316, 550, 359, 550, 408, 500, 415, 465, 431, 431, 424, 409, 466, 397, 517, 349, 606, 345, 685, 361, 757, 363, 887, 353, 946, 355, 977, 373, 1003, 387, 1040, 397, 1055, 412, 1072, 421, 1153, 505, 1168, 523, 1191, 533, 1223, 530, 1244, 516, 1260, 509, 1280, 508, 1282, 720, 0, 721)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)

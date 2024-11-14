@@ -8,6 +8,7 @@ class_name FishingScene
 @export var fish_caught_list: FishCaughtList
 
 var player_list: Array[String]
+var can_go_out: bool = true
 
 func extra_initialization() -> void:
 	player_info.remove_player_from_field.connect(remove_player)
@@ -18,7 +19,7 @@ func extra_initialization() -> void:
 		add_players(player)
 
 func _unhandled_input(event):
-	if event.is_action_pressed("player_general_pausemenu"):
+	if event.is_action_pressed("player_general_pausemenu") and can_go_out:
 		game_info.change_scene(0)
 
 func remove_player(player_id) -> void:
@@ -37,8 +38,12 @@ func add_players(player: PlayerData) -> void:
 	fisherman_instance.position = fisherman_spawn.position
 	fisherman_instance.place_fish_in_boat_inventory.connect(send_fish_to_boat)
 	fisherman_instance.place_fish_in_boat_inventory.connect(fish_caught_list.display_fish)
+	fisherman_instance.can_go_out.connect(set_leave_permission)
 	player_list.append(str(player.player_id))
 	fisherman_spawn_node.add_child(fisherman_instance)
 
 func send_fish_to_boat(fishes: Array[Dictionary]) -> void:
 	game_info.catch_inventory.append_array(fishes)
+
+func set_leave_permission(can_leave: bool) -> void:
+	can_go_out = can_leave

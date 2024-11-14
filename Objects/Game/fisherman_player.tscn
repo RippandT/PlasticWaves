@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0r7scjvxmjtf"]
+[gd_scene load_steps=20 format=3 uid="uid://b0r7scjvxmjtf"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player_fishing_movement.gd" id="1_08csq"]
 [ext_resource type="Script" path="res://Scripts/Player/oxygen_meter.gd" id="2_0p11k"]
-[ext_resource type="Texture2D" uid="uid://cpo1i0l0wtt0" path="res://Assets/Player/Overworld/Placeholder/PlayerOverworld-Placeholder.png" id="2_74tcf"]
 [ext_resource type="Script" path="res://_debug/Script/fisherman_fish_counter.gd" id="3_0oxi5"]
 [ext_resource type="SpriteFrames" uid="uid://wij6r8kmakjh" path="res://_debug/Assets/Player/player_fishing_anims.tres" id="3_3gik6"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/state_machine.gd" id="3_24kb3"]
@@ -11,7 +10,8 @@
 [ext_resource type="Script" path="res://Scripts/Player/Fishing/States/move_swim_state.gd" id="6_nto3b"]
 [ext_resource type="Script" path="res://Scripts/Player/Fishing/line_fishing.gd" id="7_1286c"]
 [ext_resource type="Script" path="res://Scripts/Player/Fishing/dive_fishing.gd" id="8_c8qtm"]
-[ext_resource type="Texture2D" uid="uid://buia22bw78ar0" path="res://_debug/Assets/Player/Hook.png" id="9_8707w"]
+[ext_resource type="Texture2D" uid="uid://77ugb8x5c0ec" path="res://Assets/Player/hook.png" id="10_bjemb"]
+[ext_resource type="Texture2D" uid="uid://b4f7vw003qc0f" path="res://Assets/Fish/fish_1.png" id="11_210ku"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_yyyop"]
 
@@ -28,10 +28,6 @@ size = Vector2(12, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qokl6"]
 size = Vector2(5, 5)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fkgmy"]
-atlas = ExtResource("2_74tcf")
-region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rr7yf"]
 size = Vector2(15, 25.25)
@@ -166,21 +162,22 @@ collision_layer = 0
 collision_mask = 16
 monitorable = false
 script = ExtResource("7_1286c")
-fish_in_hook = NodePath("Sprite2D")
+fish_in_hook = NodePath("FishSprite")
 fisherman_player = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hook"]
 shape = SubResource("RectangleShape2D_qokl6")
 
 [node name="Hook" type="Sprite2D" parent="Hook"]
-scale = Vector2(0.01, 0.01)
-texture = ExtResource("9_8707w")
+scale = Vector2(0.065, 0.065)
+texture = ExtResource("10_bjemb")
 
-[node name="Sprite2D" type="Sprite2D" parent="Hook"]
+[node name="FishSprite" type="Sprite2D" parent="Hook"]
 visible = false
-position = Vector2(0, 3)
-scale = Vector2(0.46875, 0.46875)
-texture = SubResource("AtlasTexture_fkgmy")
+rotation = 1.5708
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("11_210ku")
+offset = Vector2(209.108, -0.206446)
 
 [node name="FishGrab" type="Area2D" parent="." node_paths=PackedStringArray("fisherman_player")]
 collision_layer = 0

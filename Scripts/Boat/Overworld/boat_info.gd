@@ -6,7 +6,7 @@ var direction_array: Array[String] = ["up, up_right, right, down_right, down, do
 
 # Boat Location
 var direction: int = 0
-var location: Vector2 = Vector2(250, 250)
+var location: Vector2 = Vector2(621, 407)
 var map: String
 
 # Boat Stats

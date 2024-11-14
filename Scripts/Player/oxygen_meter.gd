@@ -7,3 +7,7 @@ func setup_meter(max_meter_value: int) -> void:
 
 func update_meter(meter: int) -> void:
 	value = meter
+	if value == max_value:
+		hide()
+	else:
+		show()

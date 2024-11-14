@@ -2,6 +2,7 @@ extends CharacterMovement
 class_name FishermanMovement
 
 signal place_fish_in_boat_inventory(fishes: Array[Dictionary])
+signal can_go_out(can: bool)
 
 @export var swim_speed: float
 @export var player_name_label: Label

@@ -16,6 +16,7 @@ func init_state() -> void:
 
 func enter() -> void:
 	activation.emit(true)
+	parent.can_go_out.emit(false)
 
 func process_physics(delta) -> State:
 	if is_multiplayer_authority():

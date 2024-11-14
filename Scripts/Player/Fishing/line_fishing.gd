@@ -29,5 +29,7 @@ func move(direction: float) -> void:
 func get_fish(fish: Node2D) -> void:
 	if get_fish_inventory_count() == 0 and activated:
 		add_fish_to_inventory(fish)
+		$FishSprite.texture = fish.fish_sprite.texture
+		$FishSprite.scale = 0.025 * fish.scale
 		fish.call_deferred("queue_free")
 		fish_in_hook.visible = true

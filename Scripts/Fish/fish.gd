@@ -23,7 +23,9 @@ class_name Fish
 		return fish_price_per_kilo
 	set(value):
 		fish_price_per_kilo = clampf(Math.roundup(value), 0, 99999.99)
+@export var fish_texture: CompressedTexture2D
 
+@onready var fish_sprite: Sprite2D = $FishSprite
 
 var fish_weight_max: float
 var fish_weight_min: float
@@ -40,7 +42,11 @@ func _ready() -> void:
 	visibility_checker = $VisibilityChecker
 	fish_weight = Math.roundup(randf_range(fish_weight_min, fish_weight_max), Math.DECIMALS.THOUSANDTHS)
 	set_fish_scale(fish_weight)
+	fish_sprite.texture = fish_texture
 	name = fish_name + " " + str(fish_weight)
+	
+	if is_moving == false:
+		flip_fish = randi_range(0, 1)
 	
 	# Stores either -1 or 1 depending on flip_fish
 	# Remember PEMDAS; Parenthesis first, then subtraction
@@ -49,6 +55,8 @@ func _ready() -> void:
 	visibility_checker.screen_exited.connect(swim_away)
 	
 	speed_x = speed * (flip_int)
+	# This will change into directly applying the flip to the Sprite2D in the future
+	# IDK what I was cooking
 	apply_scale(Vector2(flip_int, 1))
 
 func _physics_process(delta) -> void:

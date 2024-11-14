@@ -12,6 +12,9 @@ var time_passed: float
 func init_state() -> void:
 	move_platformer.connect(parent.move_character_platformer)
 
+func enter() -> void:
+	parent.can_go_out.emit(true)
+
 func process_physics(delta: float) -> State:
 	time_passed += delta
 	if is_multiplayer_authority():

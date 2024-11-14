@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdwo0ubn0picr"]
+[gd_scene load_steps=8 format=3 uid="uid://cdwo0ubn0picr"]
 
-[ext_resource type="Texture2D" uid="uid://cpo1i0l0wtt0" path="res://Assets/Player/Overworld/Placeholder/PlayerOverworld-Placeholder.png" id="1_kag5e"]
 [ext_resource type="Script" path="res://Scripts/Fish/fish.gd" id="1_u82in"]
+[ext_resource type="Texture2D" uid="uid://qtk4md2hgwrm" path="res://Assets/Fish/fish_2.png" id="2_a8cem"]
+[ext_resource type="Texture2D" uid="uid://b4f7vw003qc0f" path="res://Assets/Fish/fish_1.png" id="2_cnnod"]
+[ext_resource type="Shader" path="res://Shaders/shadow_2d.gdshader" id="3_d6e8g"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fk72y"]
-atlas = ExtResource("1_kag5e")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nlwq1"]
+shader = ExtResource("3_d6e8g")
+shader_parameter/debug = false
+shader_parameter/border_scale = 2.0
+shader_parameter/shadow_offset = Vector2(-12.66, 6.44)
+shader_parameter/color = null
+shader_parameter/blur_amount = 1.101
+shader_parameter/shadow_scale = 1.5
+shader_parameter/disable_rotating = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uts8r"]
-size = Vector2(40.5, 27)
+size = Vector2(69.5, 42)
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5dsl3"]
 properties/0/path = NodePath(".:position")
@@ -26,15 +34,16 @@ fish_name = "Milkfish"
 fish_weight_average = 1.5
 fish_weight_range = 0.75
 fish_price_per_kilo = 120.0
+fish_texture = ExtResource("2_a8cem")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-20.6124, 0)
-rotation = 1.5708
-scale = Vector2(2.57656, 2.57656)
-texture = SubResource("AtlasTexture_fk72y")
+[node name="FishSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nlwq1")
+position = Vector2(-35, 0)
+scale = Vector2(-0.165, 0.165)
+texture = ExtResource("2_cnnod")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-20.75, -0.5)
+position = Vector2(-35.25, -2)
 shape = SubResource("RectangleShape2D_uts8r")
 
 [node name="VisibilityChecker" type="VisibleOnScreenNotifier2D" parent="."]

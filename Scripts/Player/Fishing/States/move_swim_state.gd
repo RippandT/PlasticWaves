@@ -18,6 +18,7 @@ func init_state() -> void:
 
 func enter() -> void:
 	activation.emit(true)
+	parent.can_go_out.emit(false)
 
 func exit() -> void:
 	activation.emit(false)

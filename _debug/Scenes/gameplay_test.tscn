@@ -82,12 +82,11 @@ text = "Test Newspaper.
 
 This will show the player the events and other effects that will occur in the day.
 
-For the prototype, there will only be two fishes to be found (Milkfish and Tuna). Any bottles that were collected will not add to the total amount of fish shown, but to demonstrate the plastic cleanup mechanic of the game. There will only be one day and the game ends once you decided to sell your catch. Time is unlimited for the prototype, so catch until your heart's content!"
+Prototype Notes:
+	
+	There will only be three fishes to be found (Milkfish, Mackerel, and Tuna), and none of which harms the player. Any bottles that were collected will not add to the total amount of fish shown, but to demonstrate the plastic cleanup mechanic of the game. You can't die even if your oxygen meter (displayed on the rightside of the player) is depleted. There will only be one day and the game ends once you decided to sell your catch. 
 
-[node name="HSeparator2" type="HSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 40
-theme_override_styles/separator = SubResource("StyleBoxEmpty_ltxy2")
+Time is unlimited for the prototype, so catch until your heart's content!"
 
 [node name="HSeparator3" type="HSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
