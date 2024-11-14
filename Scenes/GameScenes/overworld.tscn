@@ -84,6 +84,12 @@ text = "Sell Fish"
 position = Vector2(640, 359)
 speed = 250.0
 
+[node name="WorldBorder" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldBorder"]
+build_mode = 1
+polygon = PackedVector2Array(426, 1, -2, 296, 0, 719, 1280, 720, 1280, 1)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 360)
 

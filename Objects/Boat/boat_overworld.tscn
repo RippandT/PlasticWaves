@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Boat/Overworld/States/moving_state.gd" id="5_nhp62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp2g6"]
-size = Vector2(121, 85)
+size = Vector2(121, 34)
 
 [node name="BoatOverworld" type="CharacterBody2D"]
 collision_layer = 2
@@ -16,7 +16,7 @@ script = ExtResource("1_ewx8c")
 speed = 150.0
 
 [node name="WorldCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -10.5)
+position = Vector2(-0.5, 15)
 shape = SubResource("RectangleShape2D_yp2g6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

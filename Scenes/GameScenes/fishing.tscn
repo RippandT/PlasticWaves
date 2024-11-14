@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://f7vxvrtmrda"]
+[gd_scene load_steps=18 format=3 uid="uid://f7vxvrtmrda"]
 
 [ext_resource type="Script" path="res://Scripts/Game/SceneInitializers/fishing_scene.gd" id="1_1d555"]
 [ext_resource type="Script" path="res://Scripts/Camera/camera_follow.gd" id="2_3hq0m"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b0r7scjvxmjtf" path="res://Objects/Game/fisherman_player.tscn" id="5_l1pbv"]
 [ext_resource type="Script" path="res://Scripts/Fish/Fishing/fish_spawner.gd" id="6_lkbch"]
 [ext_resource type="PackedScene" uid="uid://cdwo0ubn0picr" path="res://Objects/Fish/Fish.tscn" id="7_656qj"]
+[ext_resource type="Texture2D" uid="uid://dbxrng1pq6x7t" path="res://_debug/Assets/Bottle.png" id="8_xvgpj"]
 
 [sub_resource type="Gradient" id="Gradient_ab0l3"]
 offsets = PackedFloat32Array(1)
@@ -162,7 +163,7 @@ position = Vector2(1290, 666)
 
 [node name="DeepFish" parent="Fishes" instance=ExtResource("7_656qj")]
 modulate = Color(0.865245, 0.516105, 0.969547, 1)
-position = Vector2(282, 1286)
+position = Vector2(312, 1256)
 is_moving = false
 fish_name = "Tuna"
 fish_price_per_kilo = 300.0
@@ -183,7 +184,7 @@ fish_price_per_kilo = 300.0
 
 [node name="DeepFish4" parent="Fishes" instance=ExtResource("7_656qj")]
 modulate = Color(0.865245, 0.516105, 0.969547, 1)
-position = Vector2(379, 1532)
+position = Vector2(461, 1326)
 is_moving = false
 fish_name = "Tuna"
 fish_price_per_kilo = 300.0
@@ -197,17 +198,343 @@ fish_price_per_kilo = 300.0
 
 [node name="DeepFish6" parent="Fishes" instance=ExtResource("7_656qj")]
 modulate = Color(0.865245, 0.516105, 0.969547, 1)
-position = Vector2(900, 1552)
+position = Vector2(951, 1301)
 is_moving = false
 fish_name = "Tuna"
 fish_price_per_kilo = 300.0
 
 [node name="DeepFish7" parent="Fishes" instance=ExtResource("7_656qj")]
 modulate = Color(0.865245, 0.516105, 0.969547, 1)
-position = Vector2(608, 1472)
+position = Vector2(626, 1373)
 is_moving = false
 fish_name = "Tuna"
 fish_price_per_kilo = 300.0
+
+[node name="DeepFish8" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(755, 1290)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish9" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(291, 1391)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish10" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(112, 1280)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish11" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(1122, 1227)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="DeepFish12" parent="Fishes" instance=ExtResource("7_656qj")]
+modulate = Color(0.865245, 0.516105, 0.969547, 1)
+position = Vector2(1182, 1333)
+is_moving = false
+fish_name = "Tuna"
+fish_price_per_kilo = 300.0
+
+[node name="Bottle" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(266, 1500)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle2" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(307, 1605)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle2" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle3" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(465, 1559)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle3" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle4" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(633, 1599)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle4" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle5" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(803, 1567)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle5" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle6" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(938, 1608)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle6" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle7" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(1086, 1570)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle7" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="VisibilityChecker" parent="Fishes/Bottle7" index="2"]
+position = Vector2(-14.3443, 7.37704)
+
+[node name="Bottle8" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(1238, 1616)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle8" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle9" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(1238, 1616)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle9" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle10" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(111, 1525)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle10" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle11" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(196, 1686)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle11" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle12" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(434, 1677)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle12" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle13" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(597, 1698)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle13" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle14" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(754, 1704)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle14" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle15" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(1228, 1526)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle15" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle16" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(1098, 1694)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle16" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle17" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(972, 1511)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle17" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
+
+[node name="Bottle18" parent="Fishes" instance=ExtResource("7_656qj")]
+position = Vector2(913, 1710)
+scale = Vector2(2.44, 2.44)
+is_moving = false
+fish_name = "Plastic Bottle"
+fish_weight_average = 3.0
+fish_weight_range = 1.5
+fish_price_per_kilo = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" parent="Fishes/Bottle18" index="0"]
+position = Vector2(-20.612, 2.25)
+rotation = 0.0
+scale = Vector2(0.082, 0.082)
+texture = ExtResource("8_xvgpj")
 
 [node name="Water" type="Area2D" parent="."]
 position = Vector2(360, 240)
@@ -216,6 +543,8 @@ collision_mask = 2
 gravity_space_override = 3
 gravity = 400.0
 script = ExtResource("4_psroe")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
 position = Vector2(281, 721.5)
@@ -238,7 +567,28 @@ spawn_path = NodePath("../Players")
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
 collision_mask = 0
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WorldBorder"]
 build_mode = 1
 polygon = PackedVector2Array(-25, 0, -25, 1759, 1313, 1759, 1313, 0)
+
+[editable path="Fishes/Bottle"]
+[editable path="Fishes/Bottle2"]
+[editable path="Fishes/Bottle3"]
+[editable path="Fishes/Bottle4"]
+[editable path="Fishes/Bottle5"]
+[editable path="Fishes/Bottle6"]
+[editable path="Fishes/Bottle7"]
+[editable path="Fishes/Bottle8"]
+[editable path="Fishes/Bottle9"]
+[editable path="Fishes/Bottle10"]
+[editable path="Fishes/Bottle11"]
+[editable path="Fishes/Bottle12"]
+[editable path="Fishes/Bottle13"]
+[editable path="Fishes/Bottle14"]
+[editable path="Fishes/Bottle15"]
+[editable path="Fishes/Bottle16"]
+[editable path="Fishes/Bottle17"]
+[editable path="Fishes/Bottle18"]

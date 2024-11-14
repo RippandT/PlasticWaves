@@ -18,7 +18,7 @@ func activate_fishing(active: bool) -> void:
 
 ## Moves the hook
 func move(direction: float) -> void:
-	position.y += direction
+	position.y = clampf(position.y + direction, 0.0, 140.0)
 	# Check if the player is at the boat
 	# Right now, it only checks if the player's above sea level
 	if position.y <= 0.0 and get_fish_inventory_count() > 0:
