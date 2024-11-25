@@ -1,20 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://bh5x2psau7odb"]
+[gd_scene load_steps=16 format=3 uid="uid://bh5x2psau7odb"]
 
 [ext_resource type="Script" path="res://Scripts/Game/game_info.gd" id="1_8s0sb"]
 [ext_resource type="Script" path="res://Scripts/Game/game_initializer.gd" id="1_rrtqo"]
 [ext_resource type="PackedScene" uid="uid://f7vxvrtmrda" path="res://Scenes/GameScenes/fishing.tscn" id="2_cbw3k"]
 [ext_resource type="PackedScene" uid="uid://v3n6hql7kbyr" path="res://Scenes/GameScenes/overworld.tscn" id="2_nnecm"]
-[ext_resource type="Script" path="res://Scripts/Game/player_info.gd" id="2_wkyts"]
-[ext_resource type="Script" path="res://Scripts/Boat/Overworld/boat_info.gd" id="3_yot51"]
 [ext_resource type="PackedScene" uid="uid://2c0of41cehqe" path="res://Scenes/GameScenes/selling.tscn" id="4_1x0kt"]
+[ext_resource type="Script" path="res://_debug/Script/fishdex_fish_select.gd" id="7_ek75d"]
+[ext_resource type="Script" path="res://_debug/Script/fish_description.gd" id="7_fv0f2"]
+[ext_resource type="Texture2D" uid="uid://b4f7vw003qc0f" path="res://Assets/Fish/fish_1.png" id="7_l0e52"]
 [ext_resource type="Script" path="res://_debug/Script/newspaper_prototype.gd" id="8_1kkk2"]
+[ext_resource type="Resource" uid="uid://dwxlsm3eqi0n1" path="res://Assets/Fish/Fishdex/Milkfish.tres" id="8_jk8do"]
+[ext_resource type="Resource" uid="uid://b2bpjs3bpx8b2" path="res://Assets/Fish/Fishdex/Mackerel.tres" id="9_w3uf2"]
+[ext_resource type="Resource" uid="uid://biycid02gmmh7" path="res://Assets/Fish/Fishdex/Tuna.tres" id="10_1rl1u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cb88l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iwotl"]
+font_size = 41
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ltxy2"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_506sj"]
-properties/0/path = NodePath("PlayerInfo:player_data")
-properties/0/spawn = true
-properties/0/replication_mode = 2
 
 [node name="GameplayTest" type="Node"]
 script = ExtResource("1_rrtqo")
@@ -26,24 +30,10 @@ selling_scene = ExtResource("4_1x0kt")
 script = ExtResource("1_8s0sb")
 game_overseer = NodePath("..")
 
-[node name="PlayerInfo" type="Node" parent="."]
-script = ExtResource("2_wkyts")
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="BoatInfo" type="Node" parent="."]
-script = ExtResource("3_yot51")
-
-[node name="Control" type="Control" parent="."]
-z_index = 5
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("8_1kkk2")
-
-[node name="PanelContainer" type="PanelContainer" parent="Control"]
-layout_mode = 1
+[node name="Encyclopedia" type="PanelContainer" parent="UI"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -55,27 +45,114 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Encyclopedia"]
 layout_mode = 2
 theme_override_constants/margin_left = 45
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 45
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Encyclopedia/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Fishes" type="VBoxContainer" parent="UI/Encyclopedia/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="Label" type="Label" parent="UI/Encyclopedia/MarginContainer/HBoxContainer/Fishes"]
+layout_mode = 2
+text = "Fishdex"
+
+[node name="Button" type="Button" parent="UI/Encyclopedia/MarginContainer/HBoxContainer/Fishes"]
+layout_mode = 2
+text = "Milkfish"
+script = ExtResource("7_ek75d")
+fishdex = ExtResource("8_jk8do")
+
+[node name="Button3" type="Button" parent="UI/Encyclopedia/MarginContainer/HBoxContainer/Fishes"]
+layout_mode = 2
+text = "Mackerel"
+script = ExtResource("7_ek75d")
+fishdex = ExtResource("9_w3uf2")
+
+[node name="Button2" type="Button" parent="UI/Encyclopedia/MarginContainer/HBoxContainer/Fishes"]
+layout_mode = 2
+text = "Tuna"
+script = ExtResource("7_ek75d")
+fishdex = ExtResource("10_1rl1u")
+
+[node name="Button4" type="Button" parent="UI/Encyclopedia/MarginContainer/HBoxContainer/Fishes"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Exit"
+
+[node name="VSeparator" type="VSeparator" parent="UI/Encyclopedia/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 55
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cb88l")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Encyclopedia/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="FishDescription" type="VBoxContainer" parent="UI/Encyclopedia/MarginContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_fv0f2")
+
+[node name="Title" type="Label" parent="UI/Encyclopedia/MarginContainer/HBoxContainer/ScrollContainer/FishDescription"]
+layout_mode = 2
+text = "Tuna"
+label_settings = SubResource("LabelSettings_iwotl")
+
+[node name="Picture" type="TextureRect" parent="UI/Encyclopedia/MarginContainer/HBoxContainer/ScrollContainer/FishDescription"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("7_l0e52")
+
+[node name="Descriptions" type="RichTextLabel" parent="UI/Encyclopedia/MarginContainer/HBoxContainer/ScrollContainer/FishDescription"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "These fishes live under the water (in the prototype)."
+
+[node name="Notice" type="PanelContainer" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 90.0
+offset_top = 75.0
+offset_right = -90.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_1kkk2")
+metadata/_edit_group_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Notice"]
+layout_mode = 2
+theme_override_constants/margin_left = 45
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 45
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Notice/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/Notice/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 41
 text = "Newspaper"
 
-[node name="HSeparator" type="HSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="UI/Notice/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ltxy2")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Notice/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Test Newspaper.
@@ -88,22 +165,19 @@ Prototype Notes:
 
 Time is unlimited for the prototype, so catch until your heart's content!"
 
-[node name="HSeparator3" type="HSeparator" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HSeparator3" type="HSeparator" parent="UI/Notice/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 theme_override_styles/separator = SubResource("StyleBoxEmpty_ltxy2")
 
-[node name="Close" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Close" type="Button" parent="UI/Notice/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(190.285, 54.54)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Close"
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_506sj")
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Scenes/GameScenes/overworld.tscn", "res://Scenes/GameScenes/fishing.tscn", "res://Scenes/GameScenes/selling.tscn")
-spawn_path = NodePath("..")
-
-[connection signal="pressed" from="Control/PanelContainer/MarginContainer/VBoxContainer/Close" to="Control" method="close_newspaper"]
+[connection signal="change_dex" from="UI/Encyclopedia/MarginContainer/HBoxContainer/Fishes/Button" to="UI/Encyclopedia/MarginContainer/HBoxContainer/ScrollContainer/FishDescription" method="display_fish_description"]
+[connection signal="change_dex" from="UI/Encyclopedia/MarginContainer/HBoxContainer/Fishes/Button3" to="UI/Encyclopedia/MarginContainer/HBoxContainer/ScrollContainer/FishDescription" method="display_fish_description"]
+[connection signal="change_dex" from="UI/Encyclopedia/MarginContainer/HBoxContainer/Fishes/Button2" to="UI/Encyclopedia/MarginContainer/HBoxContainer/ScrollContainer/FishDescription" method="display_fish_description"]
+[connection signal="button_down" from="UI/Encyclopedia/MarginContainer/HBoxContainer/Fishes/Button4" to="UI/Encyclopedia/MarginContainer/HBoxContainer/ScrollContainer/FishDescription" method="toggle_visibility"]
+[connection signal="pressed" from="UI/Notice/MarginContainer/VBoxContainer/Close" to="UI/Notice" method="close_newspaper"]

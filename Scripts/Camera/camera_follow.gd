@@ -1,6 +1,8 @@
 extends Camera2D
 class_name FishermanCamera
 
+signal camera_position(cam_position: Vector2)
+
 @export var player_to_follow: FishermanMovement
 @export var limit_top_left: Marker2D
 @export var limit_bottom_right: Marker2D
@@ -20,3 +22,4 @@ func _ready():
 func _process(delta):
 	if player_to_follow != null:
 		position = player_to_follow.position
+		camera_position.emit(position)

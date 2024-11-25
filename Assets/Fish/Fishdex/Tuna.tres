@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishdexEntry" load_steps=3 format=3 uid="uid://biycid02gmmh7"]
+
+[ext_resource type="Script" path="res://Scripts/Game/fishdex_entry.gd" id="1_3jpf3"]
+[ext_resource type="Texture2D" uid="uid://b4f7vw003qc0f" path="res://Assets/Fish/fish_1.png" id="1_uic7o"]
+
+[resource]
+script = ExtResource("1_3jpf3")
+title = "Tuna"
+picture = ExtResource("1_uic7o")
+description = "Unlike the other fishes, they just like to sit still in deep waters. They're just a chill fish."

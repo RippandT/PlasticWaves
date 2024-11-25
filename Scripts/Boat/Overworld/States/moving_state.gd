@@ -9,10 +9,11 @@ signal move_vector(direction: Vector2)
 
 var animation_suffix: String
 
-var info: BoatInfo
+#var info: BoatData
 
 func init_state() -> void:
-	info = parent.boat_info
+	return
+	#info = parent.boat_info
 
 func enter() -> void:
 	#if animation_suffix == "":

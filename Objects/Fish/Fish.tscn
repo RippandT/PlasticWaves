@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdwo0ubn0picr"]
+[gd_scene load_steps=7 format=3 uid="uid://cdwo0ubn0picr"]
 
 [ext_resource type="Script" path="res://Scripts/Fish/fish.gd" id="1_u82in"]
 [ext_resource type="Texture2D" uid="uid://qtk4md2hgwrm" path="res://Assets/Fish/fish_2.png" id="2_a8cem"]
@@ -17,14 +17,6 @@ shader_parameter/disable_rotating = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uts8r"]
 size = Vector2(69.5, 42)
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5dsl3"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
 
 [node name="Fish" type="CharacterBody2D"]
 collision_layer = 16
@@ -49,6 +41,3 @@ shape = SubResource("RectangleShape2D_uts8r")
 [node name="VisibilityChecker" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-20.5, -0.499999)
 scale = Vector2(2.05, 1.35)
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_5dsl3")

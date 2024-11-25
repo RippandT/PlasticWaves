@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bs28ig01j1maa"]
+[gd_scene load_steps=6 format=3 uid="uid://bs28ig01j1maa"]
 
 [ext_resource type="Script" path="res://_debug/Script/host_prototype.gd" id="1_0ya38"]
 [ext_resource type="Texture2D" uid="uid://bb4ekri1l5y3l" path="res://icon.png" id="1_pgguf"]
 [ext_resource type="PackedScene" uid="uid://bh5x2psau7odb" path="res://_debug/Scenes/gameplay_test.tscn" id="2_8corw"]
-[ext_resource type="Script" path="res://_debug/Script/join_prototype.gd" id="3_crx8f"]
-[ext_resource type="Script" path="res://_debug/Script/activate_join_button.gd" id="3_k4bmn"]
 [ext_resource type="Script" path="res://_debug/Script/quit_game_button.gd" id="6_abll8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c4reb"]
@@ -48,7 +46,7 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Menu"]
 layout_mode = 2
-text = "Prototype (version: Capstone 1 Defense 0.1.0)"
+text = "Prototype (version: Capstone 1 0.1.1)"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Menu"]
@@ -56,28 +54,10 @@ layout_mode = 2
 theme_override_constants/separation = 65
 theme_override_styles/separator = SubResource("StyleBoxEmpty_c4reb")
 
-[node name="Host" type="Button" parent="Menu"]
+[node name="StartGame" type="Button" parent="Menu"]
 layout_mode = 2
 text = "Start Game"
 script = ExtResource("1_0ya38")
-gameplay_test = ExtResource("2_8corw")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu"]
-visible = false
-layout_mode = 2
-script = ExtResource("3_k4bmn")
-
-[node name="LineEdit" type="LineEdit" parent="Menu/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "localhost"
-placeholder_text = "IP Address"
-
-[node name="Join" type="Button" parent="Menu/HBoxContainer"]
-custom_minimum_size = Vector2(170, 0)
-layout_mode = 2
-text = "Join"
-script = ExtResource("3_crx8f")
 gameplay_test = ExtResource("2_8corw")
 
 [node name="HSeparator2" type="HSeparator" parent="Menu"]

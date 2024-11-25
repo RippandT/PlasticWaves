@@ -7,10 +7,11 @@ class_name BoatIdleState
 
 var animation_suffix: String
 
-var info: BoatInfo
+#var info: BoatData
 
 func init_state() -> void:
-	info = parent.boat_info
+	return
+	#info = parent.game_info.boat_data
 
 func enter() -> void:
 	#if animation_suffix == "":

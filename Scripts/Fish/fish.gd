@@ -64,7 +64,7 @@ func _physics_process(delta) -> void:
 		move_character_topdown(Vector2.RIGHT)
 
 func swim_away() -> void:
-	if multiplayer.is_server():
+	if is_moving:
 		call_deferred("queue_free")
 
 func set_range(average: float, range: float) -> void:

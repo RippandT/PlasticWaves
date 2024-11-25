@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishdexEntry" load_steps=3 format=3 uid="uid://b2bpjs3bpx8b2"]
+
+[ext_resource type="Texture2D" uid="uid://cji0digh4lqf6" path="res://Assets/Fish/fish_3.png" id="1_6vbrm"]
+[ext_resource type="Script" path="res://Scripts/Game/fishdex_entry.gd" id="1_yg7vx"]
+
+[resource]
+script = ExtResource("1_yg7vx")
+title = "Mackerel"
+picture = ExtResource("1_6vbrm")
+description = "These fishes prefer to swim in-between deep sea and shallow waters."
