@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://f7vxvrtmrda"]
+[gd_scene load_steps=26 format=3 uid="uid://f7vxvrtmrda"]
 
 [ext_resource type="Script" path="res://Scripts/Game/SceneInitializers/fishing_scene.gd" id="1_1d555"]
 [ext_resource type="Script" path="res://Scripts/Camera/camera_follow.gd" id="2_3hq0m"]
 [ext_resource type="Script" path="res://Scenes/GameScenes/fish_inventory_gui.gd" id="3_owmws"]
 [ext_resource type="Script" path="res://Scripts/Fish/Fishing/fishing_water.gd" id="4_psroe"]
 [ext_resource type="PackedScene" uid="uid://bd35qd86usxj6" path="res://Objects/Game/fish_inventory_label.tscn" id="4_rqyl6"]
+[ext_resource type="Script" path="res://_debug/Script/timer_prototype.gd" id="5_7wnxc"]
 [ext_resource type="PackedScene" uid="uid://b0r7scjvxmjtf" path="res://Objects/Game/fisherman_player.tscn" id="5_l1pbv"]
 [ext_resource type="Script" path="res://Scripts/Fish/Fishing/fish_spawner.gd" id="6_lkbch"]
 [ext_resource type="PackedScene" uid="uid://cdwo0ubn0picr" path="res://Objects/Fish/Fish.tscn" id="7_656qj"]
@@ -90,6 +91,7 @@ fisherman_camera = NodePath("Game/CameraBox/Camera2D")
 fish_caught_list = NodePath("UI/FishCaughtList")
 
 [node name="UI" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="FishCaughtList" type="Control" parent="UI" node_paths=PackedStringArray("fish_container")]
 layout_mode = 3
@@ -98,6 +100,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("3_owmws")
 fish_inventory_label = ExtResource("4_rqyl6")
 fish_container = NodePath("ScrollContainer/FishContainer")
@@ -140,11 +143,24 @@ horizontal_scroll_mode = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="UI"]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI"]
+z_index = 5
+offset_left = 10.0
+offset_top = 44.0
+offset_right = 98.0
+offset_bottom = 67.0
+theme_override_constants/separation = 15
+script = ExtResource("5_7wnxc")
+
+[node name="Label" type="Label" parent="UI/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Time:"
+
+[node name="Time" type="Label" parent="UI/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "00:00"
 
 [node name="Game" type="Node2D" parent="."]
 
@@ -561,6 +577,8 @@ build_mode = 1
 polygon = PackedVector2Array(-25, 0, -25, 1759, 1313, 1759, 1313, 0)
 
 [node name="FishingTimer" type="Timer" parent="."]
+
+[connection signal="times_up" from="UI/HBoxContainer2" to="." method="times_up"]
 
 [editable path="Game/Fishes/Bottle"]
 [editable path="Game/Fishes/Bottle2"]

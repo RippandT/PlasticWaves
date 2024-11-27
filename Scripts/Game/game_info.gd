@@ -1,9 +1,27 @@
 extends Node
 class_name GameInfo
 
+# Only for the prototype
+@onready var time_cycle_label = $"../UI/TimeCycle"
+
 @export var game_overseer: GameInitializer
 var catch_inventory: Array[Dictionary]
 var active_quest: Array[Dictionary]
+
+## 0 for Morning; 1 for Afternoon; 2 for Night
+var time_cycle: int = 0:
+	set(value):
+		time_cycle = value
+		
+		match value:
+			0:
+				time_cycle_label.text = "Morning"
+			1:
+				time_cycle_label.text = "Afternoon"
+			2:
+				time_cycle_label.text = "Night"
+			_:
+				time_cycle_label.text = "Return to Harbor"
 
 var player_data: PlayerData
 var boat_data: BoatData

@@ -14,7 +14,7 @@ func extra_initialization() -> void:
 
 func _unhandled_input(event):
 	if event.is_action_pressed("player_general_pausemenu") and can_go_out:
-		game_info.change_scene(0)
+		times_up()
 
 # Bro, this is getting too long lmao
 func add_players(player: PlayerData) -> void:
@@ -32,3 +32,8 @@ func send_fish_to_boat(fishes: Array[Dictionary]) -> void:
 
 func set_leave_permission(can_leave: bool) -> void:
 	can_go_out = can_leave
+
+func times_up() -> void:
+	game_info.time_cycle += 1
+	game_info.player_data.fish_captured.clear()
+	game_info.change_scene(0)

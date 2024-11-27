@@ -32,6 +32,14 @@ game_overseer = NodePath("..")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="TimeCycle" type="Label" parent="UI"]
+offset_left = 15.0
+offset_top = 10.0
+offset_right = 125.0
+offset_bottom = 47.0
+theme_override_font_sizes/font_size = 27
+text = "Morning"
+
 [node name="Encyclopedia" type="PanelContainer" parent="UI"]
 visible = false
 anchors_preset = 15
@@ -119,7 +127,6 @@ size_flags_vertical = 3
 text = "These fishes live under the water (in the prototype)."
 
 [node name="Notice" type="PanelContainer" parent="UI"]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -145,7 +152,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="UI/Notice/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 41
-text = "Newspaper"
+text = "Notice"
 
 [node name="HSeparator" type="HSeparator" parent="UI/Notice/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -155,15 +162,35 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_ltxy2")
 [node name="RichTextLabel" type="RichTextLabel" parent="UI/Notice/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Test Newspaper.
+text = "Prototype Notes:
+	There will only be three fishes to be found (Milkfish, Mackerel, and Tuna), and none of which harms the player. You can't die even if your oxygen meter (displayed on the rightside of the player) is depleted. There will only be one day and the game ends once you decided to submit your catch. 
 
-This will show the player the events and other effects that will occur in the day.
+	Unlike last time, you only have five minutes to catch fish per time phase. A time phase consists of morning, afternoon, and night. The time phases once five minutes has passed, or if you exit out manually. Once you go through all of the time phase, you cannot fish again and thus would need to submit your catch. In the full game, the phase affects what fishes you can capture and the kind of danger that will pose for the player.
 
-Prototype Notes:
-	
-	There will only be three fishes to be found (Milkfish, Mackerel, and Tuna), and none of which harms the player. Any bottles that were collected will not add to the total amount of fish shown, but to demonstrate the plastic cleanup mechanic of the game. You can't die even if your oxygen meter (displayed on the rightside of the player) is depleted. There will only be one day and the game ends once you decided to sell your catch. 
+New changes in 0.1.1:
+- Added an Fishdex that informs the player about the fishes.
+	- Right now, it displays all of the fishes. In the full game, the players would unlock them by catching the fishes.
+- Added time.
+	- Refer to the second paragraph of the Prototype Notes.
+- Changed the Fishing UI so now it follows the camera.
+- Removed Multiplayer
+- Removed price listing from showing up
+	- This is to demonstrate that the game will no longer focus on selling the fishes, and thus no longer focuses on the fisherman as well
 
-Time is unlimited for the prototype, so catch until your heart's content!"
+Controls:
+Overworld:
+Move - WASD (Keyboard) - Left Stick (Controller)
+Interact - Space (Keyboard) - Xbox A (Controller)
+
+Fishing:
+Move - WASD (Keyboard) - Left Stick (Controller)
+Hook Fishing (On Boat) - Space (Keyboard) - Xbox A (Controller)
+Move Hook (Hook Fishing) - WS (Keyboard) - Left Stick (Controller)
+Grab Fish (When Dive Fishing and near a fish) - Space (Keyboard) - Xbox A (Controller)
+Exit Fishing (Only when on boat and not fishing) - Escape (Keyboard) - Start (Controller)
+
+General:
+Open Fishdex - E (Keyboard) - Select/Back (Controller)"
 
 [node name="HSeparator3" type="HSeparator" parent="UI/Notice/MarginContainer/VBoxContainer"]
 layout_mode = 2

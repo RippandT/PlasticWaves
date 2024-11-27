@@ -7,9 +7,11 @@ var game: GameInfo
 func _enter_tree():
 	game = get_parent().game_info
 	body_entered.connect(boat_entered)
+	body_exited.connect(boat_exited)
 
 func go_fishing():
-	print(next_scene)
+	if next_scene == 0 and game.time_cycle >= 3:
+		return
 	game.change_scene(next_scene)
 
 func boat_entered(boat: BoatOverworldCharacter):
