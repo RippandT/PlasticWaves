@@ -168,7 +168,7 @@ text = "Prototype Notes:
 	Unlike last time, you only have five minutes to catch fish per time phase. A time phase consists of morning, afternoon, and night. The time phases once five minutes has passed, or if you exit out manually. Once you go through all of the time phase, you cannot fish again and thus would need to submit your catch. In the full game, the phase affects what fishes you can capture and the kind of danger that will pose for the player.
 
 New changes in 0.1.1:
-- Added an Fishdex that informs the player about the fishes.
+- Added a Fishdex that informs the player about the fishes.
 	- Right now, it displays all of the fishes. In the full game, the players would unlock them by catching the fishes.
 - Added time.
 	- Refer to the second paragraph of the Prototype Notes.
