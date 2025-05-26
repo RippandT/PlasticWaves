@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0jsc878l3div"]
-
-[ext_resource type="Script" path="res://Scripts/Input/input_detection.gd" id="1_117if"]
-
-[node name="InputTest" type="Node2D"]
-script = ExtResource("1_117if")

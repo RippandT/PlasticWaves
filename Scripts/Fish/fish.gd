@@ -1,76 +1,66 @@
 extends CharacterMovement
-class_name Fish
+class_name FishEntity
 
-@export var is_moving: bool = true
 @export_group("Fish Info")
-@export var fish_name: String
-## In kg, limit's 999999.99; cannot go into the negatives
-@export var fish_weight_average: float:
-	get:
-		return fish_weight_average
-	set(value):
-		fish_weight_average = clampf(value, 0, 9999999.99)
-		set_range(fish_weight_average, fish_weight_range)
-@export var fish_weight_range: float:
-	get:
-		return fish_weight_range
-	set(value):
-		fish_weight_range = clampf(Math.roundup(value), 0, 9999.99)
-		set_range(fish_weight_average, fish_weight_range)
-## In PHP
-@export var fish_price_per_kilo: float:
-	get:
-		return fish_price_per_kilo
-	set(value):
-		fish_price_per_kilo = clampf(Math.roundup(value), 0, 99999.99)
-@export var fish_texture: CompressedTexture2D
+@export var fish: FishInfo
+@onready var sprite: Sprite2D = $FishSprite
 
-@onready var fish_sprite: Sprite2D = $FishSprite
+@export_group("Fish Movement")
+## Sets the direction of the fish's movement. 
+## If stationary, then the fish will stay in place (mainly used for fishes that are spawned in the middle of the water)
+@export_enum("LEFT:-1",	"STATIONARY:0", "RIGHT:1") var movement_direction: int = 0
+## Sets the movement pattern of the fish
+## Does nothing if `movement_direction` is set to `STATIONARY`
+## TODO: implement movement patterns
+@export var movement_pattern: int = 0
 
-var fish_weight_max: float
-var fish_weight_min: float
 var fish_weight: float:
 	get:
 		return fish_weight
 	set(value):
 		fish_weight = clampf(value, 0, 9999999.99)
+var fish_speed: float:
+	get:
+		return fish_speed
+	set(value):
+		fish_speed = clampf(value, 0, 9999.99)
 
 var visibility_checker: VisibleOnScreenNotifier2D
 var flip_fish: bool = false
 
 func _ready() -> void:
-	visibility_checker = $VisibilityChecker
-	fish_weight = Math.roundup(randf_range(fish_weight_min, fish_weight_max), Math.DECIMALS.THOUSANDTHS)
-	set_fish_scale(fish_weight)
-	fish_sprite.texture = fish_texture
-	name = fish_name + " " + str(fish_weight)
+	# Lambda functions for weight and scale 
+	var set_fish_weight = func(average: float, weight_range: float):
+		fish_weight = Math.roundup(randf_range(average - weight_range, average + weight_range), Math.DECIMALS.THOUSANDTHS)
+	var set_fish_scale = func (weight: float):
+		var size = weight / fish.weight_average
+		set_scale(Vector2(size, size))
 	
-	if is_moving == false:
-		flip_fish = randi_range(0, 1)
+	#visibility_checker = $VisibilityChecker
+	#visibility_checker.screen_exited.connect(swim_away)
 	
-	# Stores either -1 or 1 depending on flip_fish
-	# Remember PEMDAS; Parenthesis first, then subtraction
-	var flip_int: int = 1 - (2 * int(flip_fish))
+	# Set properties of the fish
+	sprite.texture = fish.texture
+	set_fish_weight.call(fish.weight_average, fish.weight_range)
+	set_fish_scale.call(fish_weight)
+
+	# For debugging purposes
+	self.name = fish.name + " " + str(fish_weight)
 	
-	visibility_checker.screen_exited.connect(swim_away)
+	speed.x = fish_speed * float(abs(movement_direction))
+
+	if movement_direction == 0:
+		sprite.flip_h = bool(randi_range(0, 1))
+		return
 	
-	speed_x = speed * (flip_int)
-	# This will change into directly applying the flip to the Sprite2D in the future
-	# IDK what I was cooking
-	apply_scale(Vector2(flip_int, 1))
+	sprite.flip_h = bool(movement_direction)
+
 
 func _physics_process(delta) -> void:
-	if is_moving:
-		move_character_topdown(Vector2.RIGHT)
+	if movement_direction == 0:
+		return
+		
+	move_character_topdown(Vector2(movement_direction, 0), delta)
 
 func swim_away() -> void:
-	if is_moving:
-		call_deferred("queue_free")
-
-func set_range(average: float, range: float) -> void:
-	fish_weight_max = average + range
-	fish_weight_min = average - range
-
-func set_fish_scale(weight: float) -> void:
-	var fish_size = weight / fish_weight_average
-	set_scale(Vector2(fish_size, fish_size))
+	call_deferred("queue_free")

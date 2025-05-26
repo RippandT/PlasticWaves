@@ -4,7 +4,8 @@ class_name Math
 # Decimal places
 const DECIMALS = {
 	"HUNDREDTHS": 100,
-	"THOUSANDTHS": 1000
+	"THOUSANDTHS": 1000,
+	"TENTHOUSANDTHS": 10000
 }
 
 ## Round up number to the nearest place in decimal
