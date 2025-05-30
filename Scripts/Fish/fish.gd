@@ -25,27 +25,29 @@ var fish_speed: float:
 	set(value):
 		fish_speed = clampf(value, 0, 9999.99)
 
-var visibility_checker: VisibleOnScreenNotifier2D
 var flip_fish: bool = false
 
 func _ready() -> void:
+	setup_fish()
+
+func setup_fish(fish_info: FishInfo = fish) -> void:
+	if fish_info == null:
+		return
+
 	# Lambda functions for weight and scale 
 	var set_fish_weight = func(average: float, weight_range: float):
 		fish_weight = Math.roundup(randf_range(average - weight_range, average + weight_range), Math.DECIMALS.THOUSANDTHS)
 	var set_fish_scale = func (weight: float):
-		var size = weight / fish.weight_average
+		var size = weight / fish_info.weight_average
 		set_scale(Vector2(size, size))
 	
-	#visibility_checker = $VisibilityChecker
-	#visibility_checker.screen_exited.connect(swim_away)
-	
 	# Set properties of the fish
-	sprite.texture = fish.texture
-	set_fish_weight.call(fish.weight_average, fish.weight_range)
+	sprite.texture = fish_info.texture
+	set_fish_weight.call(fish_info.weight_average, fish_info.weight_range)
 	set_fish_scale.call(fish_weight)
 
 	# For debugging purposes
-	self.name = fish.name + " " + str(fish_weight)
+	self.name = fish_info.name + " " + str(fish_weight)
 	
 	speed.x = fish_speed * float(abs(movement_direction))
 
@@ -54,7 +56,6 @@ func _ready() -> void:
 		return
 	
 	sprite.flip_h = bool(movement_direction)
-
 
 func _physics_process(delta) -> void:
 	if movement_direction == 0:
