@@ -3,7 +3,7 @@ class_name DialogueSystem
 
 signal dialogue_box_visibility(visible: bool)
 signal send_line(line: String)
-signal send_decisions(decisions: Array[String])
+signal send_decisions(decisions: Array[DialogueChoice])
 
 ## The dialogue tree to be played
 @export var dialogue_tree: DialogueTree
@@ -31,22 +31,22 @@ func next_line() -> void:
 	current_dialogue_index += 1
 	display_dialogue(current_dialogue_index)
 
-	if current_dialogue_tree.dialogue_tree_branch.is_branching:
-		send_decisions.emit(current_dialogue_tree.dialogue_tree_branch.branching_choices)
+	if current_dialogue_tree.is_branching:
+		send_decisions.emit(current_dialogue_tree.dialogue_choices)
 
 ## Display the line
 func display_dialogue(index: int) -> void:
 	index = clampi(0, 999999, index)
 
-	if index >= current_dialogue_tree.dialogue_tree_branch.dialogue_leaves.size():
+	if index >= current_dialogue_tree.dialogue_branch.dialogue_leaves.size():
 		dialogue_box_visibility.emit(false)
 		return
 
-	send_line.emit(current_dialogue_tree.dialogue_tree_branch.dialogue_leaves[index])
+	send_line.emit(current_dialogue_tree.dialogue_branch.dialogue_leaves[index])
 
 ## Try to branch out
-func try_branching(branch_index: int) -> void:
-	var branch_requirement_type: int = current_dialogue_tree.next_branches[branch_index].dialogue_tree_branch.dialogue_requirement.dialogue_requirement_type
+func try_branch(branch_index: int) -> void:
+	var branch_requirement_type: int = current_dialogue_tree.next_branches[branch_index].dialogue_branch.dialogue_requirement.dialogue_requirement_type
 
 	match branch_requirement_type:
 		0: # None
