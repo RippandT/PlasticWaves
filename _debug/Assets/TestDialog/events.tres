@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="DialogueChoice" load_steps=19 format=3 uid="uid://bx0v1ca5lao00"]
+
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_choice.gd" id="1_1tbrt"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="1_ne4re"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_event.gd" id="2_ygt0k"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_branch.gd" id="3_4ilj0"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_requirement.gd" id="5_7jt0b"]
+[ext_resource type="Resource" uid="uid://3plykaa78nlp" path="res://_debug/Assets/TestDialog/choices.tres" id="6_3d722"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_tree.gd" id="6_mdutd"]
+[ext_resource type="Resource" uid="uid://b337sptk8i76r" path="res://_debug/Assets/TestDialog/requirements.tres" id="7_cmyve"]
+
+[sub_resource type="Resource" id="Resource_fm8ak"]
+script = ExtResource("5_7jt0b")
+dialogue_requirement_type = 0
+dialogue_requirement_need = ""
+dialogue_requirement_name = ""
+
+[sub_resource type="Resource" id="Resource_qalnh"]
+script = ExtResource("1_ne4re")
+character_name = "Developer"
+character_dialogue = "Sometimes, the game would need to play out some sort of event while you are still talking to a character."
+dialogue_events = Array[ExtResource("2_ygt0k")]([])
+
+[sub_resource type="Resource" id="Resource_qwwgt"]
+script = ExtResource("1_ne4re")
+character_name = "Developer"
+character_dialogue = "It is activated based on a line of dialog, or as I would call it: Dialog Leaf"
+dialogue_events = Array[ExtResource("2_ygt0k")]([])
+
+[sub_resource type="Resource" id="Resource_cyr7q"]
+script = ExtResource("1_ne4re")
+character_name = "Developer"
+character_dialogue = "This particular leaf will spawn a box somewhere on the top-left of the screen."
+dialogue_events = Array[ExtResource("2_ygt0k")]([])
+
+[sub_resource type="Resource" id="Resource_iqvuh"]
+script = ExtResource("1_ne4re")
+character_name = "Developer"
+character_dialogue = "And this one will make it move by animation."
+dialogue_events = Array[ExtResource("2_ygt0k")]([])
+
+[sub_resource type="Resource" id="Resource_8scdh"]
+script = ExtResource("1_ne4re")
+character_name = "Developer"
+character_dialogue = "This one will change the color of the cube, and play a different animation for it. The dialog system lets developers set more than one event to play."
+dialogue_events = Array[ExtResource("2_ygt0k")]([])
+
+[sub_resource type="Resource" id="Resource_hkq50"]
+script = ExtResource("1_ne4re")
+character_name = "Developer"
+character_dialogue = "Last, but not least, it could even give you an item as well. Right now we can't show you that just yet, but the game proper will feature it at points."
+dialogue_events = Array[ExtResource("2_ygt0k")]([])
+
+[sub_resource type="Resource" id="Resource_mxvgo"]
+script = ExtResource("1_ne4re")
+character_name = "Developer"
+character_dialogue = "Is there any other thing you would like to learn about?"
+dialogue_events = Array[ExtResource("2_ygt0k")]([])
+
+[sub_resource type="Resource" id="Resource_onuk5"]
+script = ExtResource("3_4ilj0")
+dialogue_leaves = Array[ExtResource("1_ne4re")]([SubResource("Resource_qalnh"), SubResource("Resource_qwwgt"), SubResource("Resource_cyr7q"), SubResource("Resource_iqvuh"), SubResource("Resource_8scdh"), SubResource("Resource_hkq50"), SubResource("Resource_mxvgo")])
+
+[sub_resource type="Resource" id="Resource_gdrqb"]
+script = ExtResource("6_mdutd")
+dialogue_branch = SubResource("Resource_onuk5")
+is_branching = true
+dialogue_choices = Array[ExtResource("1_1tbrt")]([ExtResource("6_3d722"), null, ExtResource("7_cmyve")])
+
+[resource]
+script = ExtResource("1_1tbrt")
+dialogue_choice_line = "Dialog driven events."
+dialogue_tree = SubResource("Resource_gdrqb")
+dialogue_requirement = SubResource("Resource_fm8ak")

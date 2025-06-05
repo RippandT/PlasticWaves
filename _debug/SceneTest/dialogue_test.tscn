@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://bo8jk6545lir8"]
+
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_system.gd" id="1_v262y"]
+[ext_resource type="Resource" uid="uid://djeckxp4vx2fc" path="res://_debug/Assets/TestDialog/first.tres" id="2_vd4em"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_choice.gd" id="3_wkclo"]
+[ext_resource type="Resource" uid="uid://3plykaa78nlp" path="res://_debug/Assets/TestDialog/choices.tres" id="4_ti061"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_tree.gd" id="5_jki5c"]
+[ext_resource type="Resource" uid="uid://bx0v1ca5lao00" path="res://_debug/Assets/TestDialog/events.tres" id="5_n7trg"]
+[ext_resource type="Resource" uid="uid://b337sptk8i76r" path="res://_debug/Assets/TestDialog/requirements.tres" id="6_8gw8t"]
+[ext_resource type="Script" path="res://_debug/TestScripts/dialog_display.gd" id="6_jhyjv"]
+[ext_resource type="Script" path="res://_debug/TestScripts/choice_display.gd" id="7_f3e4p"]
+
+[sub_resource type="Resource" id="Resource_gq08i"]
+script = ExtResource("5_jki5c")
+dialogue_branch = ExtResource("2_vd4em")
+is_branching = true
+dialogue_choices = Array[ExtResource("3_wkclo")]([ExtResource("4_ti061"), ExtResource("5_n7trg"), ExtResource("6_8gw8t")])
+
+[node name="DialogueTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v262y")
+dialogue_tree = SubResource("Resource_gq08i")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Dialog" type="PanelContainer" parent="." node_paths=PackedStringArray("character_display", "dialogue_display")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -385.0
+offset_top = 58.0
+offset_right = 385.0
+offset_bottom = 277.0
+grow_horizontal = 2
+script = ExtResource("6_jhyjv")
+character_display = NodePath("MarginContainer/VBoxContainer/Character")
+dialogue_display = NodePath("MarginContainer/VBoxContainer/Dialog")
+
+[node name="MarginContainer" type="MarginContainer" parent="Dialog"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Dialog/MarginContainer"]
+layout_mode = 2
+
+[node name="Character" type="Label" parent="Dialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Character"
+
+[node name="Dialog" type="RichTextLabel" parent="Dialog/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dialogue"
+
+[node name="Choices" type="PanelContainer" parent="." node_paths=PackedStringArray("next_button", "choices_container", "dialogue_system")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -385.0
+offset_top = 294.0
+offset_right = 385.0
+offset_bottom = 375.0
+grow_horizontal = 2
+script = ExtResource("7_f3e4p")
+next_button = NodePath("MarginContainer/VBoxContainer/Next")
+choices_container = NodePath("MarginContainer/VBoxContainer/Choices")
+dialogue_system = NodePath("..")
+
+[node name="MarginContainer" type="MarginContainer" parent="Choices"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Choices/MarginContainer"]
+layout_mode = 2
+
+[node name="Next" type="Button" parent="Choices/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Next >"
+
+[node name="Choices" type="VBoxContainer" parent="Choices/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="send_decisions" from="." to="Choices" method="display_choices"]
+[connection signal="send_line" from="." to="Dialog" method="display_dialogue"]
+[connection signal="pressed" from="Choices/MarginContainer/VBoxContainer/Next" to="." method="next_line"]

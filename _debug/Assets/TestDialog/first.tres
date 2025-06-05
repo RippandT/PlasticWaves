@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogueBranch" load_steps=9 format=3 uid="uid://djeckxp4vx2fc"]
+
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="1_yqax0"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_event.gd" id="2_1xwof"]
+[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_branch.gd" id="3_g6oct"]
+
+[sub_resource type="Resource" id="Resource_04v7l"]
+script = ExtResource("1_yqax0")
+character_name = "Developer"
+character_dialogue = "Hello there!"
+dialogue_events = Array[ExtResource("2_1xwof")]([])
+
+[sub_resource type="Resource" id="Resource_1722f"]
+script = ExtResource("1_yqax0")
+character_name = "Developer"
+character_dialogue = "Welcome to this demo of the dialog system. I sincerely hope this all works."
+dialogue_events = Array[ExtResource("2_1xwof")]([])
+
+[sub_resource type="Resource" id="Resource_kmhrm"]
+script = ExtResource("1_yqax0")
+character_name = "Developer"
+character_dialogue = "This dialog system has a bunch of features that should be *enough* for a non-dialog focused game, like this one. Note that I said \"non-dialog **focused**\", the game may have a lot of dialog, but that's not the main focal point like a visual novel. Even so, this system has the essentials."
+dialogue_events = Array[ExtResource("2_1xwof")]([])
+
+[sub_resource type="Resource" id="Resource_dsibc"]
+script = ExtResource("1_yqax0")
+character_name = "You"
+character_dialogue = "What are the features of this system?"
+dialogue_events = Array[ExtResource("2_1xwof")]([])
+
+[sub_resource type="Resource" id="Resource_csk5o"]
+script = ExtResource("1_yqax0")
+character_name = "Developer"
+character_dialogue = "There's a bunch of them that a linear conversation won't be a good way to cover them. So I'll let you choose which feature to cover first"
+dialogue_events = Array[ExtResource("2_1xwof")]([])
+
+[resource]
+script = ExtResource("3_g6oct")
+dialogue_leaves = Array[ExtResource("1_yqax0")]([SubResource("Resource_04v7l"), SubResource("Resource_1722f"), SubResource("Resource_kmhrm"), SubResource("Resource_dsibc"), SubResource("Resource_csk5o")])

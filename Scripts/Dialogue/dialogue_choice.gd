@@ -8,4 +8,4 @@ class_name DialogueChoice
 @export var dialogue_tree: DialogueTree
 
 ## The requirement needed to play this branch.
-@export var dialogue_requirement: DialogueRequirement = DialogueRequirement.new()
+@export var dialogue_requirement: DialogueRequirement
