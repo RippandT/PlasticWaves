@@ -1,74 +1,108 @@
-[gd_resource type="Resource" script_class="DialogueChoice" load_steps=19 format=3 uid="uid://bx0v1ca5lao00"]
+[gd_resource type="Resource" script_class="DialogueBranch" load_steps=18 format=3 uid="uid://ejxutif4r32j"]
 
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_choice.gd" id="1_1tbrt"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="1_ne4re"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_event.gd" id="2_ygt0k"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_branch.gd" id="3_4ilj0"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_requirement.gd" id="5_7jt0b"]
-[ext_resource type="Resource" uid="uid://3plykaa78nlp" path="res://_debug/Assets/TestDialog/choices.tres" id="6_3d722"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_tree.gd" id="6_mdutd"]
-[ext_resource type="Resource" uid="uid://b337sptk8i76r" path="res://_debug/Assets/TestDialog/requirements.tres" id="7_cmyve"]
+[ext_resource type="Script" uid="uid://ceppqdybgbaon" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="1_ne4re"]
+[ext_resource type="Script" uid="uid://b7vgbxp86ihkv" path="res://Scripts/Dialogue/dialogue_event.gd" id="2_ygt0k"]
+[ext_resource type="Script" uid="uid://l6g4w40tv431" path="res://Scripts/Dialogue/dialogue_branch.gd" id="3_4ilj0"]
 
-[sub_resource type="Resource" id="Resource_fm8ak"]
-script = ExtResource("5_7jt0b")
-dialogue_requirement_type = 0
-dialogue_requirement_need = ""
-dialogue_requirement_name = ""
+[sub_resource type="Resource" id="Resource_xqtv2"]
+script = ExtResource("2_ygt0k")
+event_type = 2
+event_name = "coin:1"
+event_delay = 0.0
+metadata/_custom_type_script = "uid://b7vgbxp86ihkv"
 
-[sub_resource type="Resource" id="Resource_qalnh"]
+[sub_resource type="Resource" id="Resource_2e8dy"]
 script = ExtResource("1_ne4re")
 character_name = "Developer"
 character_dialogue = "Sometimes, the game would need to play out some sort of event while you are still talking to a character."
-dialogue_events = Array[ExtResource("2_ygt0k")]([])
+dialogue_events = Array[ExtResource("2_ygt0k")]([SubResource("Resource_xqtv2")])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_qwwgt"]
+[sub_resource type="Resource" id="Resource_l1t7a"]
 script = ExtResource("1_ne4re")
 character_name = "Developer"
 character_dialogue = "It is activated based on a line of dialog, or as I would call it: Dialog Leaf"
 dialogue_events = Array[ExtResource("2_ygt0k")]([])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_cyr7q"]
+[sub_resource type="Resource" id="Resource_rke20"]
+script = ExtResource("2_ygt0k")
+event_type = 0
+event_name = "DialogueTest/spawn_box"
+event_delay = 0.0
+metadata/_custom_type_script = "uid://b7vgbxp86ihkv"
+
+[sub_resource type="Resource" id="Resource_p5q58"]
 script = ExtResource("1_ne4re")
 character_name = "Developer"
 character_dialogue = "This particular leaf will spawn a box somewhere on the top-left of the screen."
-dialogue_events = Array[ExtResource("2_ygt0k")]([])
+dialogue_events = Array[ExtResource("2_ygt0k")]([SubResource("Resource_rke20")])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_iqvuh"]
+[sub_resource type="Resource" id="Resource_ph72r"]
+script = ExtResource("2_ygt0k")
+event_type = 0
+event_name = "DialogueTest/move_box"
+event_delay = 0.0
+metadata/_custom_type_script = "uid://b7vgbxp86ihkv"
+
+[sub_resource type="Resource" id="Resource_q5a6b"]
 script = ExtResource("1_ne4re")
 character_name = "Developer"
 character_dialogue = "And this one will make it move by animation."
-dialogue_events = Array[ExtResource("2_ygt0k")]([])
+dialogue_events = Array[ExtResource("2_ygt0k")]([SubResource("Resource_ph72r")])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_8scdh"]
+[sub_resource type="Resource" id="Resource_fc38n"]
+script = ExtResource("2_ygt0k")
+event_type = 1
+event_name = "change_color"
+event_delay = 0.0
+metadata/_custom_type_script = "uid://b7vgbxp86ihkv"
+
+[sub_resource type="Resource" id="Resource_m8nlq"]
+script = ExtResource("2_ygt0k")
+event_type = 0
+event_name = "DialogueTest/move_box_new"
+event_delay = 0.0
+metadata/_custom_type_script = "uid://b7vgbxp86ihkv"
+
+[sub_resource type="Resource" id="Resource_5tyg1"]
 script = ExtResource("1_ne4re")
 character_name = "Developer"
 character_dialogue = "This one will change the color of the cube, and play a different animation for it. The dialog system lets developers set more than one event to play."
-dialogue_events = Array[ExtResource("2_ygt0k")]([])
+dialogue_events = Array[ExtResource("2_ygt0k")]([SubResource("Resource_fc38n"), SubResource("Resource_m8nlq")])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_hkq50"]
+[sub_resource type="Resource" id="Resource_u1heu"]
+script = ExtResource("2_ygt0k")
+event_type = 2
+event_name = "coin:1"
+event_delay = 0.0
+metadata/_custom_type_script = "uid://b7vgbxp86ihkv"
+
+[sub_resource type="Resource" id="Resource_pypch"]
 script = ExtResource("1_ne4re")
 character_name = "Developer"
 character_dialogue = "Last, but not least, it could even give you an item as well. Right now we can't show you that just yet, but the game proper will feature it at points."
-dialogue_events = Array[ExtResource("2_ygt0k")]([])
+dialogue_events = Array[ExtResource("2_ygt0k")]([SubResource("Resource_u1heu")])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_mxvgo"]
+[sub_resource type="Resource" id="Resource_rmhe1"]
+script = ExtResource("2_ygt0k")
+event_type = 0
+event_name = "DialogueTest/despawn_box"
+event_delay = 0.0
+metadata/_custom_type_script = "uid://b7vgbxp86ihkv"
+
+[sub_resource type="Resource" id="Resource_pfyc6"]
 script = ExtResource("1_ne4re")
 character_name = "Developer"
 character_dialogue = "Is there any other thing you would like to learn about?"
-dialogue_events = Array[ExtResource("2_ygt0k")]([])
-
-[sub_resource type="Resource" id="Resource_onuk5"]
-script = ExtResource("3_4ilj0")
-dialogue_leaves = Array[ExtResource("1_ne4re")]([SubResource("Resource_qalnh"), SubResource("Resource_qwwgt"), SubResource("Resource_cyr7q"), SubResource("Resource_iqvuh"), SubResource("Resource_8scdh"), SubResource("Resource_hkq50"), SubResource("Resource_mxvgo")])
-
-[sub_resource type="Resource" id="Resource_gdrqb"]
-script = ExtResource("6_mdutd")
-dialogue_branch = SubResource("Resource_onuk5")
-is_branching = true
-dialogue_choices = Array[ExtResource("1_1tbrt")]([ExtResource("6_3d722"), null, ExtResource("7_cmyve")])
+dialogue_events = Array[ExtResource("2_ygt0k")]([SubResource("Resource_rmhe1")])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
 [resource]
-script = ExtResource("1_1tbrt")
-dialogue_choice_line = "Dialog driven events."
-dialogue_tree = SubResource("Resource_gdrqb")
-dialogue_requirement = SubResource("Resource_fm8ak")
+script = ExtResource("3_4ilj0")
+dialogue_leaves = Array[ExtResource("1_ne4re")]([SubResource("Resource_2e8dy"), SubResource("Resource_l1t7a"), SubResource("Resource_p5q58"), SubResource("Resource_q5a6b"), SubResource("Resource_5tyg1"), SubResource("Resource_pypch"), SubResource("Resource_pfyc6")])
+metadata/_custom_type_script = "uid://l6g4w40tv431"

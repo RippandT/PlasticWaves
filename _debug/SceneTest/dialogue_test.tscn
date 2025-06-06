@@ -1,20 +1,141 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo8jk6545lir8"]
+[gd_scene load_steps=26 format=3 uid="uid://bo8jk6545lir8"]
 
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_system.gd" id="1_v262y"]
-[ext_resource type="Resource" uid="uid://djeckxp4vx2fc" path="res://_debug/Assets/TestDialog/first.tres" id="2_vd4em"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_choice.gd" id="3_wkclo"]
-[ext_resource type="Resource" uid="uid://3plykaa78nlp" path="res://_debug/Assets/TestDialog/choices.tres" id="4_ti061"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_tree.gd" id="5_jki5c"]
-[ext_resource type="Resource" uid="uid://bx0v1ca5lao00" path="res://_debug/Assets/TestDialog/events.tres" id="5_n7trg"]
-[ext_resource type="Resource" uid="uid://b337sptk8i76r" path="res://_debug/Assets/TestDialog/requirements.tres" id="6_8gw8t"]
-[ext_resource type="Script" path="res://_debug/TestScripts/dialog_display.gd" id="6_jhyjv"]
-[ext_resource type="Script" path="res://_debug/TestScripts/choice_display.gd" id="7_f3e4p"]
+[ext_resource type="Script" uid="uid://b38ysxxiihyra" path="res://Scripts/Dialogue/dialogue_system.gd" id="1_v262y"]
+[ext_resource type="Script" uid="uid://b3oxlruqhrigu" path="res://Scripts/Dialogue/dialogue_choice.gd" id="3_wkclo"]
+[ext_resource type="Script" uid="uid://u1pg4f3hclyj" path="res://Scripts/Dialogue/dialogue_requirement.gd" id="4_qqh1n"]
+[ext_resource type="Resource" uid="uid://djeckxp4vx2fc" path="res://_debug/Assets/TestDialog/first.tres" id="4_ti061"]
+[ext_resource type="Script" uid="uid://ja0csw7tnhee" path="res://Scripts/Dialogue/dialogue_tree.gd" id="5_jki5c"]
+[ext_resource type="Resource" uid="uid://ejxutif4r32j" path="res://_debug/Assets/TestDialog/events.tres" id="5_n7trg"]
+[ext_resource type="Resource" uid="uid://og1x0b5qllpw" path="res://_debug/Assets/TestDialog/choices.tres" id="5_vr7kg"]
+[ext_resource type="Script" uid="uid://dlkx7ypni0ugt" path="res://_debug/TestScripts/dialog_display.gd" id="6_jhyjv"]
+[ext_resource type="Script" uid="uid://tlr031pnw7qa" path="res://_debug/TestScripts/choice_display.gd" id="7_f3e4p"]
+[ext_resource type="Resource" uid="uid://odcqe7fdlnpe" path="res://_debug/Assets/TestDialog/requirements.tres" id="8_lxaej"]
+[ext_resource type="Script" uid="uid://dcipuc0exnhsh" path="res://_debug/TestScripts/checker.gd" id="9_gu1ip"]
+[ext_resource type="AnimationLibrary" uid="uid://dcbes7d4pwxyg" path="res://_debug/Assets/TestAnimations/DialogueTest.res" id="10_vr7kg"]
+[ext_resource type="Script" uid="uid://bci5wjow7q24y" path="res://_debug/TestScripts/test_animation.gd" id="11_wm17i"]
 
-[sub_resource type="Resource" id="Resource_gq08i"]
+[sub_resource type="Resource" id="Resource_gu1ip"]
+script = ExtResource("4_qqh1n")
+dialogue_requirement_type = 0
+dialogue_requirement_need = ""
+dialogue_requirement_name = ""
+metadata/_custom_type_script = "uid://u1pg4f3hclyj"
+
+[sub_resource type="Resource" id="Resource_qqh1n"]
 script = ExtResource("5_jki5c")
-dialogue_branch = ExtResource("2_vd4em")
+dialogue_branch = ExtResource("5_vr7kg")
 is_branching = true
-dialogue_choices = Array[ExtResource("3_wkclo")]([ExtResource("4_ti061"), ExtResource("5_n7trg"), ExtResource("6_8gw8t")])
+dialogue_choices = Array[ExtResource("3_wkclo")]([])
+metadata/_custom_type_script = "uid://ja0csw7tnhee"
+
+[sub_resource type="Resource" id="Resource_vr7kg"]
+script = ExtResource("3_wkclo")
+dialogue_choice_line = "Dialog choices."
+dialogue_tree = SubResource("Resource_qqh1n")
+dialogue_requirement = SubResource("Resource_gu1ip")
+metadata/_custom_type_script = "uid://b3oxlruqhrigu"
+
+[sub_resource type="Resource" id="Resource_wm17i"]
+script = ExtResource("4_qqh1n")
+dialogue_requirement_type = 0
+dialogue_requirement_need = ""
+dialogue_requirement_name = ""
+metadata/_custom_type_script = "uid://u1pg4f3hclyj"
+
+[sub_resource type="Resource" id="Resource_ytg0d"]
+script = ExtResource("5_jki5c")
+dialogue_branch = ExtResource("5_n7trg")
+is_branching = true
+dialogue_choices = Array[ExtResource("3_wkclo")]([])
+metadata/_custom_type_script = "uid://ja0csw7tnhee"
+
+[sub_resource type="Resource" id="Resource_ongql"]
+script = ExtResource("3_wkclo")
+dialogue_choice_line = "Dialog driven events."
+dialogue_tree = SubResource("Resource_ytg0d")
+dialogue_requirement = SubResource("Resource_wm17i")
+metadata/_custom_type_script = "uid://b3oxlruqhrigu"
+
+[sub_resource type="Resource" id="Resource_kne6p"]
+script = ExtResource("4_qqh1n")
+dialogue_requirement_type = 1
+dialogue_requirement_need = "Coin:2"
+dialogue_requirement_name = "View all previous choices first."
+metadata/_custom_type_script = "uid://u1pg4f3hclyj"
+
+[sub_resource type="Resource" id="Resource_54si5"]
+script = ExtResource("5_jki5c")
+dialogue_branch = ExtResource("8_lxaej")
+is_branching = false
+dialogue_choices = Array[ExtResource("3_wkclo")]([])
+metadata/_custom_type_script = "uid://ja0csw7tnhee"
+
+[sub_resource type="Resource" id="Resource_30hwf"]
+script = ExtResource("3_wkclo")
+dialogue_choice_line = "Dialog choice requirements."
+dialogue_tree = SubResource("Resource_54si5")
+dialogue_requirement = SubResource("Resource_kne6p")
+metadata/_custom_type_script = "uid://b3oxlruqhrigu"
+
+[sub_resource type="Resource" id="Resource_v67us"]
+script = ExtResource("5_jki5c")
+dialogue_branch = ExtResource("4_ti061")
+is_branching = true
+dialogue_choices = Array[ExtResource("3_wkclo")]([SubResource("Resource_vr7kg"), SubResource("Resource_ongql"), SubResource("Resource_30hwf")])
+metadata/_custom_type_script = "uid://ja0csw7tnhee"
+
+[sub_resource type="Animation" id="Animation_ytg0d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Box:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(69, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Box:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(58, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Box:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ongql"]
+_data = {
+&"RESET": SubResource("Animation_ytg0d")
+}
 
 [node name="DialogueTest" type="Control"]
 layout_mode = 3
@@ -24,9 +145,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v262y")
-dialogue_tree = SubResource("Resource_gq08i")
+dialogue_tree = SubResource("Resource_v67us")
 
-[node name="Node" type="Node" parent="."]
+[node name="Checker" type="Node" parent="." node_paths=PackedStringArray("box")]
+script = ExtResource("9_gu1ip")
+box = NodePath("../Box")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ongql"),
+&"DialogueTest": ExtResource("10_vr7kg")
+}
+script = ExtResource("11_wm17i")
+
+[node name="Box" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = 58.0
+offset_right = -1107.0
+offset_bottom = -561.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Dialog" type="PanelContainer" parent="." node_paths=PackedStringArray("character_display", "dialogue_display")]
 layout_mode = 1
@@ -93,6 +236,14 @@ text = "Next >"
 [node name="Choices" type="VBoxContainer" parent="Choices/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[connection signal="send_decisions" from="." to="Choices" method="display_choices"]
+[connection signal="ask_item" from="." to="Checker" method="confirm_ending"]
+[connection signal="dialogue_is_ending" from="." to="Choices" method="dialogue_end"]
+[connection signal="event_animation" from="." to="AnimationPlayer" method="play_animation"]
+[connection signal="event_item" from="." to="Checker" method="checked_dialogue_choices"]
+[connection signal="event_trigger" from="." to="Checker" method="generic_event"]
+[connection signal="send_button_decisions" from="." to="Choices" method="instantiate_choices"]
 [connection signal="send_line" from="." to="Dialog" method="display_dialogue"]
+[connection signal="play_branch" from="Checker" to="." method="play_branch"]
+[connection signal="close" from="Choices" to="Dialog" method="set_visible" binds= [false]]
+[connection signal="close" from="Choices" to="Choices" method="set_visible" binds= [false]]
 [connection signal="pressed" from="Choices/MarginContainer/VBoxContainer/Next" to="." method="next_line"]

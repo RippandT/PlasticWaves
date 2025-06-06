@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="DialogueBranch" load_steps=9 format=3 uid="uid://djeckxp4vx2fc"]
 
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="1_yqax0"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_event.gd" id="2_1xwof"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_branch.gd" id="3_g6oct"]
+[ext_resource type="Script" uid="uid://ceppqdybgbaon" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="1_yqax0"]
+[ext_resource type="Script" uid="uid://b7vgbxp86ihkv" path="res://Scripts/Dialogue/dialogue_event.gd" id="2_1xwof"]
+[ext_resource type="Script" uid="uid://l6g4w40tv431" path="res://Scripts/Dialogue/dialogue_branch.gd" id="3_g6oct"]
 
 [sub_resource type="Resource" id="Resource_04v7l"]
 script = ExtResource("1_yqax0")

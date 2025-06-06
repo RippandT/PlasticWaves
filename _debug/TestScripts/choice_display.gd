@@ -1,5 +1,7 @@
 extends PanelContainer
 
+signal close
+
 @export var next_button: Button
 @export var choices_container: VBoxContainer
 @export var dialogue_system: DialogueSystem
@@ -26,8 +28,22 @@ func display_choices(decisions: Array[DialogueChoice]):
 		
 		branch_index += 1
 
+func instantiate_choices(button_decisions: Array[Button]):
+	next_button.hide()
+	print(button_decisions)
+	for button in button_decisions:
+		button.pressed.connect(reset_choices)
+		choices_container.add_child(button)
+
 func reset_choices():
 	next_button.show()
 
 	for choice in choices_container.get_children():
 		choice.queue_free()
+
+func dialogue_end():
+	next_button.text = "End"
+	next_button.pressed.connect(close_dialogue)
+
+func close_dialogue():
+	close.emit()

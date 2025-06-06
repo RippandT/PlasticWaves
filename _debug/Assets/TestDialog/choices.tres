@@ -1,62 +1,52 @@
-[gd_resource type="Resource" script_class="DialogueChoice" load_steps=17 format=3 uid="uid://3plykaa78nlp"]
+[gd_resource type="Resource" script_class="DialogueBranch" load_steps=10 format=3 uid="uid://og1x0b5qllpw"]
 
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="1_ych00"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_event.gd" id="2_gcmce"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_branch.gd" id="2_n180k"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_choice.gd" id="3_jbyve"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_requirement.gd" id="5_tatol"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_tree.gd" id="6_seqsn"]
-[ext_resource type="Resource" uid="uid://bx0v1ca5lao00" path="res://_debug/Assets/TestDialog/events.tres" id="6_vjykd"]
-[ext_resource type="Resource" uid="uid://b337sptk8i76r" path="res://_debug/Assets/TestDialog/requirements.tres" id="7_qmmvr"]
+[ext_resource type="Script" uid="uid://ceppqdybgbaon" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="1_ych00"]
+[ext_resource type="Script" uid="uid://b7vgbxp86ihkv" path="res://Scripts/Dialogue/dialogue_event.gd" id="2_gcmce"]
+[ext_resource type="Script" uid="uid://l6g4w40tv431" path="res://Scripts/Dialogue/dialogue_branch.gd" id="2_n180k"]
 
-[sub_resource type="Resource" id="Resource_40440"]
-script = ExtResource("5_tatol")
-dialogue_requirement_type = 0
-dialogue_requirement_need = ""
-dialogue_requirement_name = ""
+[sub_resource type="Resource" id="Resource_rkrq4"]
+script = ExtResource("2_gcmce")
+event_type = 2
+event_name = "coin:0"
+event_delay = 0.0
+metadata/_custom_type_script = "uid://b7vgbxp86ihkv"
 
-[sub_resource type="Resource" id="Resource_1p84t"]
+[sub_resource type="Resource" id="Resource_px36d"]
 script = ExtResource("1_ych00")
 character_name = "Developer"
 character_dialogue = "As you noticed, you could choose your responses if you were given the choice."
-dialogue_events = Array[ExtResource("2_gcmce")]([])
+dialogue_events = Array[ExtResource("2_gcmce")]([SubResource("Resource_rkrq4")])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_7m7cl"]
+[sub_resource type="Resource" id="Resource_jr0wv"]
 script = ExtResource("1_ych00")
 character_name = "Developer"
-character_dialogue = "When you clicked on the \"Dialog choices.\" option, this set of dialog will play out."
+character_dialogue = "When you clicked on the \\\"Dialog choices.\\\" option, this set of dialog will play out."
 dialogue_events = Array[ExtResource("2_gcmce")]([])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_w182j"]
+[sub_resource type="Resource" id="Resource_vgssa"]
 script = ExtResource("1_ych00")
 character_name = "Developer"
 character_dialogue = "You could make it so that there's a requirement needed in order to choose a particular path."
 dialogue_events = Array[ExtResource("2_gcmce")]([])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_2h8gi"]
+[sub_resource type="Resource" id="Resource_so4dn"]
 script = ExtResource("1_ych00")
 character_name = "Developer"
 character_dialogue = "Like the last option. You need to see everything before you could play it."
 dialogue_events = Array[ExtResource("2_gcmce")]([])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_n1w2h"]
+[sub_resource type="Resource" id="Resource_87ykk"]
 script = ExtResource("1_ych00")
 character_name = "Developer"
 character_dialogue = "Is there any other thing you would like to learn about?"
 dialogue_events = Array[ExtResource("2_gcmce")]([])
-
-[sub_resource type="Resource" id="Resource_e1qyv"]
-script = ExtResource("2_n180k")
-dialogue_leaves = Array[ExtResource("1_ych00")]([SubResource("Resource_1p84t"), SubResource("Resource_7m7cl"), SubResource("Resource_w182j"), SubResource("Resource_2h8gi"), SubResource("Resource_n1w2h")])
-
-[sub_resource type="Resource" id="Resource_gu0wy"]
-script = ExtResource("6_seqsn")
-dialogue_branch = SubResource("Resource_e1qyv")
-is_branching = true
-dialogue_choices = Array[ExtResource("3_jbyve")]([null, ExtResource("6_vjykd"), ExtResource("7_qmmvr")])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
 [resource]
-script = ExtResource("3_jbyve")
-dialogue_choice_line = "Dialog choices."
-dialogue_tree = SubResource("Resource_gu0wy")
-dialogue_requirement = SubResource("Resource_40440")
+script = ExtResource("2_n180k")
+dialogue_leaves = Array[ExtResource("1_ych00")]([SubResource("Resource_px36d"), SubResource("Resource_jr0wv"), SubResource("Resource_vgssa"), SubResource("Resource_so4dn"), SubResource("Resource_87ykk")])
+metadata/_custom_type_script = "uid://l6g4w40tv431"

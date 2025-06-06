@@ -1,56 +1,38 @@
-[gd_resource type="Resource" script_class="DialogueChoice" load_steps=16 format=3 uid="uid://b337sptk8i76r"]
+[gd_resource type="Resource" script_class="DialogueBranch" load_steps=8 format=3 uid="uid://odcqe7fdlnpe"]
 
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_requirement.gd" id="1_7oij8"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="2_3h5ln"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_event.gd" id="3_24b2i"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_branch.gd" id="4_v72ei"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_choice.gd" id="5_regu1"]
-[ext_resource type="Resource" uid="uid://3plykaa78nlp" path="res://_debug/Assets/TestDialog/choices.tres" id="6_68xdj"]
-[ext_resource type="Script" path="res://Scripts/Dialogue/dialogue_tree.gd" id="6_h7qbq"]
-[ext_resource type="Resource" uid="uid://bx0v1ca5lao00" path="res://_debug/Assets/TestDialog/events.tres" id="7_41x10"]
+[ext_resource type="Script" uid="uid://ceppqdybgbaon" path="res://Scripts/Dialogue/dialogue_leaf.gd" id="2_3h5ln"]
+[ext_resource type="Script" uid="uid://b7vgbxp86ihkv" path="res://Scripts/Dialogue/dialogue_event.gd" id="3_24b2i"]
+[ext_resource type="Script" uid="uid://l6g4w40tv431" path="res://Scripts/Dialogue/dialogue_branch.gd" id="4_v72ei"]
 
-[sub_resource type="Resource" id="Resource_on6cp"]
-script = ExtResource("1_7oij8")
-dialogue_requirement_type = 1
-dialogue_requirement_need = ""
-dialogue_requirement_name = "View all previous choices first."
-
-[sub_resource type="Resource" id="Resource_thfvt"]
+[sub_resource type="Resource" id="Resource_5kten"]
 script = ExtResource("2_3h5ln")
 character_name = "Developer"
 character_dialogue = "If you're able to see this, then that means you've already taken a look at most of the features the dialog system has to offer."
 dialogue_events = Array[ExtResource("3_24b2i")]([])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_r5nql"]
+[sub_resource type="Resource" id="Resource_8a4ac"]
 script = ExtResource("2_3h5ln")
 character_name = "Developer"
 character_dialogue = "There's more stuff that it can do, but that would require a technical writeup; seeing as they're under-the-hood features."
 dialogue_events = Array[ExtResource("3_24b2i")]([])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_ymlce"]
+[sub_resource type="Resource" id="Resource_ty340"]
 script = ExtResource("2_3h5ln")
 character_name = "Developer"
 character_dialogue = "Anyways, that's it!"
 dialogue_events = Array[ExtResource("3_24b2i")]([])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
-[sub_resource type="Resource" id="Resource_77nlm"]
+[sub_resource type="Resource" id="Resource_amp7s"]
 script = ExtResource("2_3h5ln")
 character_name = "Developer"
 character_dialogue = "I'll be seeing you in the actual game!"
 dialogue_events = Array[ExtResource("3_24b2i")]([])
-
-[sub_resource type="Resource" id="Resource_02751"]
-script = ExtResource("4_v72ei")
-dialogue_leaves = Array[ExtResource("2_3h5ln")]([SubResource("Resource_thfvt"), SubResource("Resource_r5nql"), SubResource("Resource_ymlce"), SubResource("Resource_77nlm")])
-
-[sub_resource type="Resource" id="Resource_wvrsc"]
-script = ExtResource("6_h7qbq")
-dialogue_branch = SubResource("Resource_02751")
-is_branching = false
-dialogue_choices = Array[ExtResource("5_regu1")]([ExtResource("6_68xdj"), ExtResource("7_41x10"), null])
+metadata/_custom_type_script = "uid://ceppqdybgbaon"
 
 [resource]
-script = ExtResource("5_regu1")
-dialogue_choice_line = "Dialog choice requirements."
-dialogue_tree = SubResource("Resource_wvrsc")
-dialogue_requirement = SubResource("Resource_on6cp")
+script = ExtResource("4_v72ei")
+dialogue_leaves = Array[ExtResource("2_3h5ln")]([SubResource("Resource_5kten"), SubResource("Resource_8a4ac"), SubResource("Resource_ty340"), SubResource("Resource_amp7s")])
+metadata/_custom_type_script = "uid://l6g4w40tv431"
