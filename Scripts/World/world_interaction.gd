@@ -7,7 +7,6 @@ signal object_hovered(hovering: bool)
 
 var is_mouse_hovered: bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	mouse_entered.connect(func mouse_hover():
 		is_mouse_hovered = true

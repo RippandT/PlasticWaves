@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://b854n44d7c748"]
+
+[ext_resource type="Script" uid="uid://brd5i8yyelskj" path="res://Scripts/Player/player_movement.gd" id="1_ncti0"]
+[ext_resource type="Texture2D" uid="uid://b6thfwekj1ol0" path="res://_debug/Assets/Player/Blorbo_fishing.png" id="2_0evor"]
+[ext_resource type="Script" uid="uid://dtwfght560unc" path="res://Scripts/World/movement_area.gd" id="4_ygnls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnujf"]
+atlas = ExtResource("2_0evor")
+region = Rect2(68.085, 11, 63, 108.7)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pc2if"]
+height = 38.0
+
+[node name="PlayerMovementTest" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_ncti0")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.355, 0.355)
+texture = SubResource("AtlasTexture_nnujf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_pc2if")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="WalkArea" type="Area2D" parent="."]
+script = ExtResource("4_ygnls")
+
+[node name="MovePlayer" type="Node" parent="WalkArea"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WalkArea"]
+polygon = PackedVector2Array(-22, -116, -180, -89, -221, 144, -143, 177, -79, 56, 51, 47, 157, 95, 171, 155, 224, 162, 215, 58, 217, -65, 115, -96)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Walls"]
+build_mode = 1
+polygon = PackedVector2Array(-22, -116, -180, -89, -221, 144, -143, 177, -79, 56, 51, 47, 157, 95, 171, 155, 224, 162, 215, 58, 217, -65, 115, -96)
+
+[connection signal="move_player" from="WalkArea" to="CharacterBody2D" method="move_player_to_position"]

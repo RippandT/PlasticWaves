@@ -1,9 +1,5 @@
 extends Resource
 class_name QuestItem
 
-enum QuestType {
-	ITEM,
-	TRIGGER
-}
-
-@export var quest_type: QuestType = QuestType.ITEM
+@export var quest_id: int = 0
+@export_multiline var quest_description: String
