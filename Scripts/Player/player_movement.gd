@@ -3,9 +3,13 @@ class_name PlayerMovement
 
 signal update_player_direction(direction: Vector2)
 
-const DISTANCE_ZONE: float = 0
+@export var speed_multiplier: float = 1
 
-var speed: Vector2 = Vector2(300, 300)
+const DISTANCE_ZONE: float = 1
+var speed: Vector2 = Vector2(1, 1)
+
+func _ready() -> void:
+    speed *= speed_multiplier
 
 func move_player_to_position(next_position: Vector2):
     if position.distance_to(next_position) <= DISTANCE_ZONE:

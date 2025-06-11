@@ -3,9 +3,8 @@ class_name WorldInteraction
 
 signal object_hovered(hovering: bool)
 
-@export var click_event: ClickEvent
-
 var is_mouse_hovered: bool = false
+var is_character_near: bool = false
 
 func _ready():
 	mouse_entered.connect(func mouse_hover():
@@ -16,8 +15,9 @@ func _ready():
 		object_hovered.emit(false))
 
 func _input(event: InputEvent) -> void:
-	if click_event == null:
-		return
-	
-	if event is InputEventMouseButton:
-		click_event.on_click()
+	# TODO: controller interactions
+	if event.is_action_pressed("player_general_interact") and is_mouse_hovered:
+		on_interact()
+
+func on_interact() -> void:
+	pass
