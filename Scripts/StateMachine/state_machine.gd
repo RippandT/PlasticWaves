@@ -9,7 +9,7 @@ signal state_changed(state_name: String)
 @export_group("Control")
 @export var entity: CharacterBody2D
 #@export var entity_controller
-@export var animation_player: AnimatedSprite2D
+@export var animation_player: AnimationPlayer
 @export var audio_player: AudioStreamPlayer
 
 @export_group("States")
@@ -19,7 +19,7 @@ var current_state: State
 func _ready():
 	init(entity, animation_player, audio_player)
 
-func init(parent: CharacterBody2D, animations: AnimatedSprite2D = null, audio: AudioStreamPlayer = null, controller = null):
+func init(parent: CharacterBody2D, animations: AnimationPlayer = null, audio: AudioStreamPlayer = null, controller = null):
 	for child in get_children():
 		child.parent = parent
 		child.animations = animations

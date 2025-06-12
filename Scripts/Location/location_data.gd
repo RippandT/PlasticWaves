@@ -1,4 +1,4 @@
-extends Node2D
+extends Resource
 class_name LocationData
 
-@export var player_spawn_point: Marker2D
+@export var player_spawn_point: Vector2

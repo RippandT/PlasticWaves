@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://yvptpncbayc6"]
+
+[ext_resource type="Script" uid="uid://b24m2wwsyr00u" path="res://Scripts/World/world_interaction.gd" id="1_122u0"]
+[ext_resource type="Script" uid="uid://cymydcw3qrx13" path="res://Scripts/Cursor/cursor_system.gd" id="1_o0ejf"]
+[ext_resource type="Script" uid="uid://dwpuo4jbpiia1" path="res://Scripts/Items/item_object.gd" id="2_hllep"]
+[ext_resource type="Texture2D" uid="uid://dbxrng1pq6x7t" path="res://_debug/Assets/Bottle.png" id="3_o0ejf"]
+[ext_resource type="Script" uid="uid://cbvxkme72338d" path="res://Scripts/Items/item_data.gd" id="4_f8n5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkevr"]
+size = Vector2(123, 128)
+
+[sub_resource type="Resource" id="Resource_nh3ir"]
+script = ExtResource("4_f8n5h")
+item_icon = ExtResource("3_o0ejf")
+item_name = "Test"
+item_description = "Testing 1-2-3, 1-2-3, check-check"
+metadata/_custom_type_script = "uid://cbvxkme72338d"
+
+[node name="WorldAndItemInteractionTest" type="Node"]
+script = ExtResource("1_o0ejf")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AreaInteraction" type="Area2D" parent="Node2D"]
+position = Vector2(622, 235)
+script = ExtResource("1_122u0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AreaInteraction"]
+shape = SubResource("RectangleShape2D_tkevr")
+
+[node name="AreaInteraction2" type="Area2D" parent="Node2D"]
+position = Vector2(215, 349)
+script = ExtResource("1_122u0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AreaInteraction2"]
+shape = SubResource("RectangleShape2D_tkevr")
+
+[node name="AreaInteraction3" type="Area2D" parent="Node2D"]
+position = Vector2(978, 478)
+script = ExtResource("1_122u0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AreaInteraction3"]
+shape = SubResource("RectangleShape2D_tkevr")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("3_o0ejf")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("2_hllep")
+item_data = SubResource("Resource_nh3ir")
+
+[connection signal="ask_for_item_on_hand" from="Node2D/AreaInteraction" to="." method="send_item_on_hand"]
+[connection signal="ask_for_item_on_hand" from="Node2D/AreaInteraction2" to="." method="send_item_on_hand"]
+[connection signal="ask_for_item_on_hand" from="Node2D/AreaInteraction3" to="." method="send_item_on_hand"]
+[connection signal="send_item" from="Control/TextureRect" to="." method="get_item"]

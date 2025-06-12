@@ -6,7 +6,7 @@ class_name State
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var parent: CharacterBody2D
-var animations: AnimatedSprite2D
+var animations: AnimationPlayer
 var audio: AudioStreamPlayer
 var controller
 

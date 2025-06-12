@@ -30,8 +30,6 @@ zoom = Vector2(2, 2)
 [node name="WalkArea" type="Area2D" parent="."]
 script = ExtResource("4_ygnls")
 
-[node name="MovePlayer" type="Node" parent="WalkArea"]
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WalkArea"]
 polygon = PackedVector2Array(-22, -116, -180, -89, -221, 144, -143, 177, -79, 56, 51, 47, 157, 95, 171, 155, 224, 162, 215, 58, 217, -65, 115, -96)
 
