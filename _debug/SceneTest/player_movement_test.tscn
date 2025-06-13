@@ -14,6 +14,7 @@ height = 38.0
 [node name="PlayerMovementTest" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_mask = 9
 script = ExtResource("1_ncti0")
 speed_multiplier = 150.0
 
