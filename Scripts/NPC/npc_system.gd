@@ -44,3 +44,8 @@ func on_item(item: ItemData) -> void:
 
 func change_npc_schedule(schedule_id: int) -> void:
 	npc_data.npc_status_id = schedule_id
+
+	# TODO: Activate other attributes of the schedule
+
+func player_detection(is_near: bool) -> void:
+	is_player_near = is_near
